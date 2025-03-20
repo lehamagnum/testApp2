@@ -20,7 +20,10 @@ struct Resources {
     
     struct FigmaColors {
         
-        static let lightBrown = UIColor(hex: "#A47764")
+        static let buyButtonColor = UIColor(named: "buyButtonColor")
+        static let buyButtonTextColor = UIColor(named: "buyButtonTextColor")
+        static let titleLabelColor = UIColor(named: "titleLabelColor")
+        static let whiteColor = UIColor(named: "whiteColor")
         
     }
     

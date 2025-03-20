@@ -38,9 +38,9 @@ class ProductViewController: UIViewController {
     
     private let titleLable: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        label.font = UIFont(name: "SFProText-Bold", size: 24)
         label.text = "Кожанные лоферы"
-        label.textColor = .black
+        label.textColor = Resources.FigmaColors.titleLabelColor
         label.numberOfLines = 1
         return label
     }()
@@ -48,6 +48,7 @@ class ProductViewController: UIViewController {
     private let infoButton: UIButton = {
         let but = UIButton()
         but.setImage(Resources.Images.infoButtonImage, for: .normal)
+        but.addTarget(ProductViewController.self, action: #selector(infoButtonTapped), for: .primaryActionTriggered)
         return but
     }()
     
@@ -65,17 +66,16 @@ class ProductViewController: UIViewController {
         return view
     }()
     
-    private let buyButton: UIButton = {
-        let but = UIButton()
-        but.setTitle("В корзину 4 950 Р", for: .normal)
-        but.backgroundColor = Resources.FigmaColors.lightBrown
-        but.layer.cornerRadius = 10
+    private let buyButton: PrimaryButton = {
+        let but = PrimaryButton()
+        but.addTarget(ProductViewController.self, action: #selector(buyButtonTapped), for: .primaryActionTriggered)
         return but
     }()
     
+    
     private let separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = Resources.FigmaColors.whiteColor
         // настройка тени
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: -2)
@@ -96,11 +96,11 @@ class ProductViewController: UIViewController {
     // MARK: - Methods
     
     @objc private func infoButtonTapped() {
-        print("Нажата кнопка информации")
+        debugPrint("Нажата кнопка информации")
     }
 
     @objc private func buyButtonTapped() {
-        print("Нажата кнопка в корзину")
+        debugPrint("Нажата кнопка в корзину")
     }
 }
 
@@ -171,9 +171,9 @@ extension ProductViewController {
         
         view.backgroundColor = .white
         
-        infoButton.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
+
         
-        buyButton.addTarget(self, action: #selector(buyButtonTapped), for: .touchUpInside)
+
         
     }
     
