@@ -12,8 +12,10 @@
 		B10C71742D89166C00DD41B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10C716E2D89166C00DD41B6 /* LaunchScreen.storyboard */; };
 		B10C71752D89166C00DD41B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C716A2D89166C00DD41B6 /* AppDelegate.swift */; };
 		B10C71762D89166C00DD41B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C716F2D89166C00DD41B6 /* SceneDelegate.swift */; };
-		B10C71772D89166C00DD41B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71702D89166C00DD41B6 /* ViewController.swift */; };
+		B10C71772D89166C00DD41B6 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71702D89166C00DD41B6 /* ProductViewController.swift */; };
 		B10C717B2D8918F800DD41B6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C717A2D8918F800DD41B6 /* MainViewController.swift */; };
+		B10C718D2D8BBC7300DD41B6 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C718C2D8BBC7300DD41B6 /* Resources.swift */; };
+		B10C71902D8BBFF800DD41B6 /* UIcolorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C718F2D8BBFF800DD41B6 /* UIcolorExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,8 +25,10 @@
 		B10C716C2D89166C00DD41B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B10C716D2D89166C00DD41B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B10C716F2D89166C00DD41B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B10C71702D89166C00DD41B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B10C71702D89166C00DD41B6 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		B10C717A2D8918F800DD41B6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B10C718C2D8BBC7300DD41B6 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		B10C718F2D8BBFF800DD41B6 /* UIcolorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIcolorExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 		B10C71712D89166C00DD41B6 /* testApp2 */ = {
 			isa = PBXGroup;
 			children = (
+				B10C718E2D8BBFD300DD41B6 /* Resources + Ext */,
 				B10C71782D89166F00DD41B6 /* ViewControllers */,
 				B10C71792D89167E00DD41B6 /* Support */,
 				B10C716C2D89166C00DD41B6 /* Info.plist */,
@@ -68,7 +73,7 @@
 		B10C71782D89166F00DD41B6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B10C71702D89166C00DD41B6 /* ViewController.swift */,
+				B10C71702D89166C00DD41B6 /* ProductViewController.swift */,
 				B10C717A2D8918F800DD41B6 /* MainViewController.swift */,
 			);
 			path = ViewControllers;
@@ -83,6 +88,15 @@
 				B10C716F2D89166C00DD41B6 /* SceneDelegate.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		B10C718E2D8BBFD300DD41B6 /* Resources + Ext */ = {
+			isa = PBXGroup;
+			children = (
+				B10C718F2D8BBFF800DD41B6 /* UIcolorExt.swift */,
+				B10C718C2D8BBC7300DD41B6 /* Resources.swift */,
+			);
+			path = "Resources + Ext";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,8 +178,10 @@
 			files = (
 				B10C71752D89166C00DD41B6 /* AppDelegate.swift in Sources */,
 				B10C71762D89166C00DD41B6 /* SceneDelegate.swift in Sources */,
-				B10C71772D89166C00DD41B6 /* ViewController.swift in Sources */,
+				B10C71772D89166C00DD41B6 /* ProductViewController.swift in Sources */,
+				B10C718D2D8BBC7300DD41B6 /* Resources.swift in Sources */,
 				B10C717B2D8918F800DD41B6 /* MainViewController.swift in Sources */,
+				B10C71902D8BBFF800DD41B6 /* UIcolorExt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

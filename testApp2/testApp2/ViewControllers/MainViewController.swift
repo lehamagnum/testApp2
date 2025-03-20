@@ -7,8 +7,11 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class MainViewController: UIViewController {
+    
+    // MARK: - UIElements
     
     private let button: UIButton = {
         let but = UIButton()
@@ -18,6 +21,7 @@ class MainViewController: UIViewController {
         return but
     }()
     
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +30,13 @@ class MainViewController: UIViewController {
         
     }
     
+    // MARK: - Methods
+    
     @objc private func buttonTapped() {
-        let viewController = ViewController()
+        let viewController = ProductViewController()
         viewController.modalPresentationStyle = .pageSheet
         present(viewController, animated: true)
     }
-    
-    
 }
 
 extension MainViewController {
@@ -40,24 +44,14 @@ extension MainViewController {
     func setupUI() {
         view.backgroundColor = .white
         
-        
         view.addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalTo(150)
+        }
         
-        
-        NSLayoutConstraint.activate([
-            
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            button.widthAnchor.constraint(equalToConstant: 150),
-            
-            
-            
-        ])
         
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
 
     }
-    
-
 }
