@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProductViewController: UIViewController {
     
@@ -16,6 +17,19 @@ class ProductViewController: UIViewController {
         view.backgroundColor = .white
         view.layer.cornerRadius = 20
         return view
+    }()
+    
+    private let screenScrollView: UIScrollView = {
+        let scroll = UIScrollView()
+        scroll.showsVerticalScrollIndicator = false
+        return scroll
+    }()
+    
+    private let contentStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 8
+        return stack
     }()
     
     private let itemImage: UIImageView = {
@@ -31,9 +45,10 @@ class ProductViewController: UIViewController {
         return image
     }()
     
-    private let textContainerView: UIView = {
-        let textContainerView = UIView()
-        return textContainerView
+    private let titleStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        return stack
     }()
     
     private let titleLable: UILabel = {
@@ -45,43 +60,39 @@ class ProductViewController: UIViewController {
         return label
     }()
     
-    private let infoButton: UIButton = {
-        let but = UIButton()
-        but.setImage(Resources.Images.infoButtonImage, for: .normal)
-        but.addTarget(ProductViewController.self, action: #selector(infoButtonTapped), for: .primaryActionTriggered)
+    private let infoButton: InfoButton = {
+        let but = InfoButton()
+        let action = UIAction { action in
+        debugPrint("кнопка информации нажата")}
+        but.addAction(action, for: .primaryActionTriggered)
         return but
     }()
     
     private let descriptionLable: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
         label.text = "Лоферы из натуральной кожи. Фигурная союзка с фактурным швом по контуру. Зауженный мыс. Кожаная стелька и подкладка. Прорезиненная подошва. В комплект входит пыльник."
         label.numberOfLines = 0
-        label.textColor = .lightGray
+        label.textColor = Resources.FigmaColors.descriptionColor
         return label
     }()
     
     private let containerButtonView: UIView = {
         let view = UIView()
-        return view
-    }()
-    
-    private let buyButton: PrimaryButton = {
-        let but = PrimaryButton()
-        but.addTarget(ProductViewController.self, action: #selector(buyButtonTapped), for: .primaryActionTriggered)
-        return but
-    }()
-    
-    
-    private let separatorView: UIView = {
-        let view = UIView()
         view.backgroundColor = Resources.FigmaColors.whiteColor
-        // настройка тени
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: -2)
         view.layer.shadowRadius = 3
         view.layer.shadowOpacity = 0.1
         return view
+    }()
+    
+    private let buyButton: PrimaryButton = {
+        let but = PrimaryButton()
+        let action = UIAction { action in
+        debugPrint("кнопка купить нажата")}
+        but.addAction(action, for: .primaryActionTriggered)
+        return but
     }()
     
     // MARK: - Lifecycle
@@ -95,86 +106,78 @@ class ProductViewController: UIViewController {
     
     // MARK: - Methods
     
-    @objc private func infoButtonTapped() {
-        debugPrint("Нажата кнопка информации")
-    }
-
-    @objc private func buyButtonTapped() {
-        debugPrint("Нажата кнопка в корзину")
-    }
 }
 
 extension ProductViewController {
-
-    func setupUI() {
-        // MARK: - Add Views & Constraints
     
-        view.addSubview(containerView)
-        containerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        containerView.addSubview(itemImage)
-        itemImage.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
-            make.height.equalTo(250)
-        }
-        
-        itemImage.addSubview(newImage)
-        newImage.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(16)
-            make.height.equalTo(24)
-            make.width.equalTo(44)
-        }
-        
-        containerView.addSubview(titleLable)
-        titleLable.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(itemImage.snp.bottom).offset(8)
+        func setupUI() {
+            // MARK: - Add Views & Constraints
+            // add main container
+            view.addSubview(containerView)
+            containerView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+            // add buy button container
+            containerView.addSubview(containerButtonView)
+            containerButtonView.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview()
+                make.bottom.equalTo(view.safeAreaLayoutGuide)
+                make.height.equalTo(68)
+            }
+    
+            containerButtonView.addSubview(buyButton)
+            buyButton.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview().inset(16)
+                make.bottom.equalToSuperview().inset(8)
+                make.top.equalToSuperview().inset(12)
+            }
+    
+            //add scroll
+            containerView.addSubview(screenScrollView)
+            screenScrollView.snp.makeConstraints { make in
+                make.top.equalToSuperview()
+                make.leading.trailing.equalToSuperview().inset(16)
+                make.bottom.equalTo(containerButtonView.snp.top)
+            }
+            //add content view
+            screenScrollView.addSubview(contentStack)
+            contentStack.snp.makeConstraints { make in
+                make.edges.equalTo(screenScrollView.contentLayoutGuide)
+                make.width.equalTo(screenScrollView.snp.width)
+            }
+            //add content
+            contentStack.addArrangedSubview(itemImage)
+            itemImage.snp.makeConstraints { make in
+                make.height.equalTo(250)
+            }
+    
+            itemImage.addSubview(newImage)
+            newImage.snp.makeConstraints { make in
+                make.top.equalToSuperview().inset(16)
+                make.leading.equalToSuperview()
+                make.height.equalTo(24)
+                make.width.equalTo(44)
+            }
+            
+            contentStack.addArrangedSubview(titleStack)
+            titleStack.snp.makeConstraints { make in
+                make.height.equalTo(32)
+            }
+            
+            titleStack.addArrangedSubview(titleLable)
+            
+            titleStack.addArrangedSubview(infoButton)
+            infoButton.snp.makeConstraints { make in
+                make.height.width.equalTo(32)
+            }
+            
+            contentStack.addArrangedSubview(descriptionLable)
 
+    
+            // MARK: - Configure
+    
+            view.backgroundColor = .white
+            
         }
-        containerView.addSubview(infoButton)
-        infoButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(titleLable.snp.top)
-            make.height.width.equalTo(32)
-        }
-
-        containerView.addSubview(descriptionLable)
-        descriptionLable.snp.makeConstraints { make in
-            make.top.equalTo(titleLable.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().inset(16)
-        }
-        
-        containerView.addSubview(containerButtonView)
-        containerButtonView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(containerView.snp.bottom).inset(34)
-            make.height.equalTo(68)
-        }
-        
-        containerButtonView.addSubview(buyButton)
-        buyButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.bottom.equalToSuperview().inset(8)
-            make.top.equalToSuperview().inset(12)
-        }
-        
-        containerView.addSubview(separatorView)
-        separatorView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(3)
-            make.bottom.equalTo(containerButtonView.snp.top)
-        }
-        
-        // MARK: - Configure
-        
-        view.backgroundColor = .white
-        
-
-        
-
-        
+    
     }
-    
-}
