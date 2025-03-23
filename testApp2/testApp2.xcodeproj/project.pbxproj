@@ -20,6 +20,8 @@
 		B10C71BE2D8C2C1300DD41B6 /* SFProText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B10C71B82D8C286200DD41B6 /* SFProText-Regular.ttf */; };
 		B10C71BF2D8C2F8B00DD41B6 /* SFProText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B10C71BA2D8C286200DD41B6 /* SFProText-Semibold.ttf */; };
 		B10C71C12D8E96D100DD41B6 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71C02D8E96D100DD41B6 /* InfoButton.swift */; };
+		B10C71C32D8FDF5B00DD41B6 /* SizeEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71C22D8FDF5B00DD41B6 /* SizeEntityView.swift */; };
+		B10C71C52D910B7900DD41B6 /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71C42D910B7900DD41B6 /* View+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		B10C71BA2D8C286200DD41B6 /* SFProText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.ttf"; sourceTree = "<group>"; };
 		B10C71BB2D8C286200DD41B6 /* SFProText-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		B10C71C02D8E96D100DD41B6 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
+		B10C71C22D8FDF5B00DD41B6 /* SizeEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeEntityView.swift; sourceTree = "<group>"; };
+		B10C71C42D910B7900DD41B6 /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				B10C718C2D8BBC7300DD41B6 /* Resources.swift */,
+				B10C71C42D910B7900DD41B6 /* View+extension.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 			children = (
 				B10C71942D8C21C500DD41B6 /* PrimaryButton.swift */,
 				B10C71C02D8E96D100DD41B6 /* InfoButton.swift */,
+				B10C71C22D8FDF5B00DD41B6 /* SizeEntityView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,10 +249,12 @@
 			files = (
 				B10C71C12D8E96D100DD41B6 /* InfoButton.swift in Sources */,
 				B10C71952D8C21C500DD41B6 /* PrimaryButton.swift in Sources */,
+				B10C71C32D8FDF5B00DD41B6 /* SizeEntityView.swift in Sources */,
 				B10C71752D89166C00DD41B6 /* AppDelegate.swift in Sources */,
 				B10C71762D89166C00DD41B6 /* SceneDelegate.swift in Sources */,
 				B10C71772D89166C00DD41B6 /* ProductViewController.swift in Sources */,
 				B10C718D2D8BBC7300DD41B6 /* Resources.swift in Sources */,
+				B10C71C52D910B7900DD41B6 /* View+extension.swift in Sources */,
 				B10C717B2D8918F800DD41B6 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

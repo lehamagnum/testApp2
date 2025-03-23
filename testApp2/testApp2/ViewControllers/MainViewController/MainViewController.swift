@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
     
     // MARK: - UIElements
     
-    private let button: UIButton = {
+    private lazy var button: UIButton = {
         let but = UIButton()
         but.setTitle("НА 2 ЭКРАН", for: .normal)
         but.backgroundColor = .systemBrown
@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController {
     
-    func setupUI() {
+    private func setupUI() {
         view.backgroundColor = .white
         
         view.addSubview(button)
