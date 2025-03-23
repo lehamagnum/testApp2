@@ -26,17 +26,13 @@ class InfoButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
     func configureUI() {
         
         addSubview(image)
         image.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
-        
-
-        
+    
     }
     
 }

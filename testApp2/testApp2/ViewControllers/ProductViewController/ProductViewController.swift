@@ -53,7 +53,7 @@ class ProductViewController: UIViewController {
     
     private let titleLable: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "SFProText-Bold", size: 24)
+        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.text = "Кожанные лоферы"
         label.textColor = Resources.FigmaColors.titleLabelColor
         label.numberOfLines = 1
@@ -70,7 +70,7 @@ class ProductViewController: UIViewController {
     
     private let descriptionLable: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         label.text = "Лоферы из натуральной кожи. Фигурная союзка с фактурным швом по контуру. Зауженный мыс. Кожаная стелька и подкладка. Прорезиненная подошва. В комплект входит пыльник."
         label.numberOfLines = 0
         label.textColor = Resources.FigmaColors.descriptionColor
