@@ -56,9 +56,7 @@ class SizeEntityView: UIView {
     @objc private func didTap() {
         guard let size else { return }
         delegate?.didSelectSize(with: size)
-        
     }
-
 }
 
 extension SizeEntityView {
@@ -69,7 +67,6 @@ extension SizeEntityView {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.height.equalTo(34)
-            
         }
         
         containerView.addSubview(label)
@@ -77,7 +74,5 @@ extension SizeEntityView {
             make.leading.trailing.equalToSuperview().inset(18)
             make.top.bottom.equalToSuperview().inset(8.5)
         }
-        
     }
-    
 }

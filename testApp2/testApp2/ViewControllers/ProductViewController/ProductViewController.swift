@@ -85,10 +85,7 @@ class ProductViewController: UIViewController {
     private lazy var containerButtonView: UIView = {
         let view = UIView()
         view.backgroundColor = Resources.FigmaColors.whiteColor
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: -2)
-        view.layer.shadowRadius = 3
-        view.layer.shadowOpacity = 0.1
+        view.dropShadow(offset: CGSizeMake(0, -2))
         return view
     }()
     
@@ -108,6 +105,8 @@ class ProductViewController: UIViewController {
     
     private lazy var sizeScrollView: UIScrollView = {
         let scroll = UIScrollView()
+        scroll.showsHorizontalScrollIndicator = false
+        scroll.clipsToBounds = false
         return scroll
     }()
     
