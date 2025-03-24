@@ -10,7 +10,7 @@ import UIKit
 
 class InfoButton: UIButton {
     
-    private let image: UIImageView = {
+    private lazy var image: UIImageView = {
         let image = UIImageView()
         image.image = Resources.Images.infoButtonImage
         return image
@@ -26,7 +26,7 @@ class InfoButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureUI() {
+    private func configureUI() {
         
         addSubview(image)
         image.snp.makeConstraints { make in

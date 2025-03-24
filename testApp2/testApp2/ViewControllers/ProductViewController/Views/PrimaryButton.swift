@@ -10,7 +10,7 @@ import UIKit
 
 class PrimaryButton: UIButton {
     
-    private let label: UILabel = {
+    private lazy var label: UILabel = {
         let label = UILabel()
         label.text = "В корзину 4 950 Р"
         label.textAlignment = .center
@@ -29,9 +29,7 @@ class PrimaryButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
-    func configureUI() {
+    private func configureUI() {
         
         backgroundColor = Resources.FigmaColors.buyButtonColor
         layer.cornerRadius = 10
@@ -40,8 +38,6 @@ class PrimaryButton: UIButton {
         label.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
-        
-
         
     }
     

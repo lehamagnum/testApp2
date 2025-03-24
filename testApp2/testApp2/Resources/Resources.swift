@@ -23,9 +23,13 @@ struct Resources {
         static let whiteColor = UIColor(named: "figmaWhiteColor")
         static let buyButtonColor = UIColor(named: "buyButtonColor")
         static let buyButtonTextColor = UIColor(named: "buyButtonTextColor")
+        static let borderColor = UIColor(named: "borderColor")
+        
         static let titleLabelColor = UIColor(named: "titleLabelColor")
         static let descriptionColor = UIColor(named: "descriptionColor")
         
+        static let sizeEntityColor = UIColor(named: "sizeEntityColor")
+        static let sizeEntitySelectColor = UIColor(named: "sizeEntitySelectColor")
         
     }
     
