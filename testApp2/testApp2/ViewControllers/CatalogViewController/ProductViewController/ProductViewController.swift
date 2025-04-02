@@ -59,13 +59,14 @@ class ProductViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.text = "Кожанные лоферы"
-        label.textColor = Resources.FigmaColors.titleLabelColor
+        label.textColor = Resources.FigmaColors.blackLabelColor
         label.numberOfLines = 1
         return label
     }()
     
-    private lazy var infoButton: InfoButton = {
-        let but = InfoButton()
+    private lazy var infoButton: SecondaryButton = {
+        let but = SecondaryButton()
+        but.configureButton(image: Resources.Images.infoButtonImage)
         let action = UIAction { action in
         debugPrint("кнопка информации нажата")}
         but.addAction(action, for: .primaryActionTriggered)

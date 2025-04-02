@@ -13,15 +13,21 @@
 		B10C71752D89166C00DD41B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C716A2D89166C00DD41B6 /* AppDelegate.swift */; };
 		B10C71762D89166C00DD41B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C716F2D89166C00DD41B6 /* SceneDelegate.swift */; };
 		B10C71772D89166C00DD41B6 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71702D89166C00DD41B6 /* ProductViewController.swift */; };
-		B10C717B2D8918F800DD41B6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C717A2D8918F800DD41B6 /* MainViewController.swift */; };
+		B10C717B2D8918F800DD41B6 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C717A2D8918F800DD41B6 /* CatalogViewController.swift */; };
 		B10C718D2D8BBC7300DD41B6 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C718C2D8BBC7300DD41B6 /* Resources.swift */; };
 		B10C71952D8C21C500DD41B6 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71942D8C21C500DD41B6 /* PrimaryButton.swift */; };
 		B10C71BD2D8C2C1300DD41B6 /* SFProText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B10C71B02D8C286200DD41B6 /* SFProText-Bold.ttf */; };
 		B10C71BE2D8C2C1300DD41B6 /* SFProText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B10C71B82D8C286200DD41B6 /* SFProText-Regular.ttf */; };
 		B10C71BF2D8C2F8B00DD41B6 /* SFProText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B10C71BA2D8C286200DD41B6 /* SFProText-Semibold.ttf */; };
-		B10C71C12D8E96D100DD41B6 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71C02D8E96D100DD41B6 /* InfoButton.swift */; };
+		B10C71C12D8E96D100DD41B6 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71C02D8E96D100DD41B6 /* SecondaryButton.swift */; };
 		B10C71C32D8FDF5B00DD41B6 /* SizeEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71C22D8FDF5B00DD41B6 /* SizeEntityView.swift */; };
 		B10C71C52D910B7900DD41B6 /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71C42D910B7900DD41B6 /* View+extension.swift */; };
+		B10C71E22D9D45DF00DD41B6 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71E12D9D45DF00DD41B6 /* BasketViewController.swift */; };
+		B10C71E52D9D465A00DD41B6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71E42D9D465A00DD41B6 /* TabBarController.swift */; };
+		B10C71E72D9D467E00DD41B6 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71E62D9D467E00DD41B6 /* TabBarButton.swift */; };
+		B16D75D12D9E40D600B741E6 /* ClothesTypeEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */; };
+		B16D75D32DA0FA0800B741E6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D22DA0FA0800B741E6 /* TableViewCell.swift */; };
+		B16D75D52DA1468000B741E6 /* UIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D42DA1468000B741E6 /* UIModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +38,7 @@
 		B10C716D2D89166C00DD41B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B10C716F2D89166C00DD41B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B10C71702D89166C00DD41B6 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
-		B10C717A2D8918F800DD41B6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B10C717A2D8918F800DD41B6 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		B10C718C2D8BBC7300DD41B6 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		B10C71942D8C21C500DD41B6 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		B10C71B02D8C286200DD41B6 /* SFProText-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Bold.ttf"; sourceTree = "<group>"; };
@@ -47,9 +53,15 @@
 		B10C71B92D8C286200DD41B6 /* SFProText-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-RegularItalic.ttf"; sourceTree = "<group>"; };
 		B10C71BA2D8C286200DD41B6 /* SFProText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.ttf"; sourceTree = "<group>"; };
 		B10C71BB2D8C286200DD41B6 /* SFProText-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-SemiboldItalic.ttf"; sourceTree = "<group>"; };
-		B10C71C02D8E96D100DD41B6 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
+		B10C71C02D8E96D100DD41B6 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		B10C71C22D8FDF5B00DD41B6 /* SizeEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeEntityView.swift; sourceTree = "<group>"; };
 		B10C71C42D910B7900DD41B6 /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
+		B10C71E12D9D45DF00DD41B6 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
+		B10C71E42D9D465A00DD41B6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		B10C71E62D9D467E00DD41B6 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
+		B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesTypeEntityView.swift; sourceTree = "<group>"; };
+		B16D75D22DA0FA0800B741E6 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		B16D75D42DA1468000B741E6 /* UIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				B10C718E2D8BBFD300DD41B6 /* Resources */,
+				B10C71E32D9D462500DD41B6 /* TabBar */,
 				B10C71782D89166F00DD41B6 /* ViewControllers */,
 				B10C71792D89167E00DD41B6 /* Support */,
 				B10C716C2D89166C00DD41B6 /* Info.plist */,
@@ -95,8 +108,8 @@
 		B10C71782D89166F00DD41B6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B10C71922D8C218E00DD41B6 /* MainViewController */,
-				B10C71912D8C217200DD41B6 /* ProductViewController */,
+				B10C71E02D9D457700DD41B6 /* BasketViewController */,
+				B10C71922D8C218E00DD41B6 /* CatalogViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -130,19 +143,23 @@
 			path = ProductViewController;
 			sourceTree = "<group>";
 		};
-		B10C71922D8C218E00DD41B6 /* MainViewController */ = {
+		B10C71922D8C218E00DD41B6 /* CatalogViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B10C717A2D8918F800DD41B6 /* MainViewController.swift */,
+				B10C717A2D8918F800DD41B6 /* CatalogViewController.swift */,
+				B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */,
+				B16D75D22DA0FA0800B741E6 /* TableViewCell.swift */,
+				B16D75D42DA1468000B741E6 /* UIModel.swift */,
+				B10C71912D8C217200DD41B6 /* ProductViewController */,
 			);
-			path = MainViewController;
+			path = CatalogViewController;
 			sourceTree = "<group>";
 		};
 		B10C71932D8C21A800DD41B6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				B10C71942D8C21C500DD41B6 /* PrimaryButton.swift */,
-				B10C71C02D8E96D100DD41B6 /* InfoButton.swift */,
+				B10C71C02D8E96D100DD41B6 /* SecondaryButton.swift */,
 				B10C71C22D8FDF5B00DD41B6 /* SizeEntityView.swift */,
 			);
 			path = Views;
@@ -165,6 +182,23 @@
 				B10C71BA2D8C286200DD41B6 /* SFProText-Semibold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B10C71E02D9D457700DD41B6 /* BasketViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B10C71E12D9D45DF00DD41B6 /* BasketViewController.swift */,
+			);
+			path = BasketViewController;
+			sourceTree = "<group>";
+		};
+		B10C71E32D9D462500DD41B6 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B10C71E42D9D465A00DD41B6 /* TabBarController.swift */,
+				B10C71E62D9D467E00DD41B6 /* TabBarButton.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,15 +281,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B10C71C12D8E96D100DD41B6 /* InfoButton.swift in Sources */,
+				B10C71E22D9D45DF00DD41B6 /* BasketViewController.swift in Sources */,
+				B10C71C12D8E96D100DD41B6 /* SecondaryButton.swift in Sources */,
+				B10C71E52D9D465A00DD41B6 /* TabBarController.swift in Sources */,
 				B10C71952D8C21C500DD41B6 /* PrimaryButton.swift in Sources */,
 				B10C71C32D8FDF5B00DD41B6 /* SizeEntityView.swift in Sources */,
+				B16D75D32DA0FA0800B741E6 /* TableViewCell.swift in Sources */,
+				B16D75D52DA1468000B741E6 /* UIModel.swift in Sources */,
+				B10C71E72D9D467E00DD41B6 /* TabBarButton.swift in Sources */,
 				B10C71752D89166C00DD41B6 /* AppDelegate.swift in Sources */,
 				B10C71762D89166C00DD41B6 /* SceneDelegate.swift in Sources */,
 				B10C71772D89166C00DD41B6 /* ProductViewController.swift in Sources */,
+				B16D75D12D9E40D600B741E6 /* ClothesTypeEntityView.swift in Sources */,
 				B10C718D2D8BBC7300DD41B6 /* Resources.swift in Sources */,
 				B10C71C52D910B7900DD41B6 /* View+extension.swift in Sources */,
-				B10C717B2D8918F800DD41B6 /* MainViewController.swift in Sources */,
+				B10C717B2D8918F800DD41B6 /* CatalogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
