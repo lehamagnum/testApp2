@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class MainViewController: UIViewController {
+class CatalogViewController: UIViewController {
     
     // MARK: - UIElements
     
@@ -39,7 +39,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController {
+extension CatalogViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
