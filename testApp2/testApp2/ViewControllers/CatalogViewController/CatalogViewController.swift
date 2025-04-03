@@ -11,31 +11,54 @@ import SnapKit
 
 class CatalogViewController: UIViewController {
     
-    // MARK: - UIElements
+    private let typeOfClothes = ["Каталог", "Новинки","Джинсы", "Футболки"]
     
-    private lazy var button: UIButton = {
-        let but = UIButton()
-        but.setTitle("НА 2 ЭКРАН", for: .normal)
-        but.backgroundColor = .systemBrown
-        but.layer.cornerRadius = 10
-        return but
+    // MARK: - UIElements
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.dropShadow(offset: CGSizeMake(0, 3))
+        return view
+    }()
+    
+    private lazy var sizeScrollView: UIScrollView = {
+        let scroll = UIScrollView()
+        scroll.showsHorizontalScrollIndicator = false
+        return scroll
+    }()
+    
+    private lazy var sizeContentStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 8
+        return stack
     }()
     
     // MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
-        
+        bindCatalogViewController(type: typeOfClothes, isSelected: typeOfClothes[0])
     }
     
     // MARK: - Methods
-    
-    @objc private func buttonTapped() {
-        let viewController = ProductViewController()
-        viewController.modalPresentationStyle = .pageSheet
-        present(viewController, animated: true)
+    func bindCatalogViewController(type: [String], isSelected: String?) {
+        sizeContentStack.subviews.forEach { $0.removeFromSuperview() }
+        sizeContentStack.subviews.forEach { sizeContentStack.removeArrangedSubview($0) }
+        
+        for type in typeOfClothes {
+            let view = ClothesTypeEntityView()
+            view.delegate = self
+            view.bindTypeEntityView(type: type, isSelected: isSelected == type)
+            sizeContentStack.addArrangedSubview(view)
+        }
+    }
+}
+
+extension CatalogViewController: ClothesTypeEntityViewDelegate {
+    func typeDidSelected(with type: String) {
+        bindCatalogViewController(type: typeOfClothes, isSelected: type)
     }
 }
 
@@ -43,15 +66,25 @@ extension CatalogViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
+        navigationController?.navigationBar.isHidden = true
         
-        view.addSubview(button)
-        button.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.equalTo(150)
+        view.addSubview(containerView)
+        containerView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(58)
+        }
+        //add sizeScroll
+        containerView.addSubview(sizeScrollView)
+        sizeScrollView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(12)
+            make.leading.trailing.equalToSuperview()
         }
         
-        
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-
+        sizeScrollView.addSubview(sizeContentStack)
+        sizeContentStack.snp.makeConstraints { make in
+            make.edges.equalTo(sizeScrollView.contentLayoutGuide)
+            make.height.equalTo(sizeScrollView.snp.height)
+        }
     }
 }

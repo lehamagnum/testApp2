@@ -34,6 +34,9 @@ struct Resources {
         static let sizeEntityColor = UIColor(named: "sizeEntityColor")
         static let sizeEntitySelectColor = UIColor(named: "sizeEntitySelectColor")
         
+        static let typeEntitySelectColor = UIColor(named: "typeEntitySelectColor")
+        static let typeEntityColor = UIColor(named: "typeEntityColor")
+        
     }
     
     struct Alpha {

@@ -27,6 +27,7 @@ class TabBarButton: UIButton {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .center
+        stack.spacing = 4
         stack.isUserInteractionEnabled = false
         return stack
     }()

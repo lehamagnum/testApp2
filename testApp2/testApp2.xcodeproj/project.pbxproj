@@ -25,6 +25,7 @@
 		B10C71E22D9D45DF00DD41B6 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71E12D9D45DF00DD41B6 /* BasketViewController.swift */; };
 		B10C71E52D9D465A00DD41B6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71E42D9D465A00DD41B6 /* TabBarController.swift */; };
 		B10C71E72D9D467E00DD41B6 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71E62D9D467E00DD41B6 /* TabBarButton.swift */; };
+		B16D75D12D9E40D600B741E6 /* ClothesTypeEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		B10C71E12D9D45DF00DD41B6 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 		B10C71E42D9D465A00DD41B6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B10C71E62D9D467E00DD41B6 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
+		B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesTypeEntityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				B10C717A2D8918F800DD41B6 /* CatalogViewController.swift */,
+				B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */,
 			);
 			path = CatalogViewController;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				B10C71752D89166C00DD41B6 /* AppDelegate.swift in Sources */,
 				B10C71762D89166C00DD41B6 /* SceneDelegate.swift in Sources */,
 				B10C71772D89166C00DD41B6 /* ProductViewController.swift in Sources */,
+				B16D75D12D9E40D600B741E6 /* ClothesTypeEntityView.swift in Sources */,
 				B10C718D2D8BBC7300DD41B6 /* Resources.swift in Sources */,
 				B10C71C52D910B7900DD41B6 /* View+extension.swift in Sources */,
 				B10C717B2D8918F800DD41B6 /* CatalogViewController.swift in Sources */,
