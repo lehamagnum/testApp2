@@ -18,7 +18,7 @@ class ClothesTypeEntityView: UIView {
     // MARK: - Variables
     private var type: String?
     
-    var delegate: ClothesTypeEntityViewDelegate?
+    weak var delegate: ClothesTypeEntityViewDelegate?
     
     // MARK: - UIElements
     private lazy var containerView: UIView = {

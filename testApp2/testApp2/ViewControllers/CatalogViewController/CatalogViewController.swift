@@ -9,9 +9,31 @@ import Foundation
 import UIKit
 import SnapKit
 
+let screenWidth = UIScreen.main.bounds.width
+
 class CatalogViewController: UIViewController {
     
     private let typeOfClothes = ["Каталог", "Новинки","Джинсы", "Футболки"]
+    
+    private let clothes = [
+        UIModel(image: Resources.Images.blazer,
+                       title: "Блейзер прямого кроя",
+                       description: "Двубортный блейзер на основе лиоцелла и вискозы.",
+                       price: "2 970 р"),
+        UIModel(image: Resources.Images.pants,
+                       title: "Брюки из лиоцелла",
+                       description: "Брюки прямого кроя из ткани.",
+                       price: "5000 р"),
+        UIModel(image: Resources.Images.tshort,
+                       title: "Кардиган из хлопка",
+                       description: "Короткие рукава. Застежка на пуговицы.",
+                       price: "14 999 р"),
+        UIModel(image: Resources.Images.jeans,
+                       title: "Джинсы straight fit",
+                       description: "Пять карманов. Джинсы моднячие.",
+                       price: "50 000 р"),
+    ]
+    
     
     // MARK: - UIElements
     private lazy var containerView: UIView = {
@@ -21,37 +43,46 @@ class CatalogViewController: UIViewController {
         return view
     }()
     
-    private lazy var sizeScrollView: UIScrollView = {
+    private lazy var clothesScrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.showsHorizontalScrollIndicator = false
         return scroll
     }()
     
-    private lazy var sizeContentStack: UIStackView = {
+    private lazy var clothesContentStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.spacing = 8
         return stack
     }()
     
+    private var tableView: UITableView = {
+        let table = UITableView()
+        table.separatorStyle = .none
+        table.showsVerticalScrollIndicator = false
+        table.rowHeight = UITableView.automaticDimension
+        table.estimatedRowHeight = 136
+        return table
+    }()
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        setupTableView()
         bindCatalogViewController(type: typeOfClothes, isSelected: typeOfClothes[0])
     }
     
     // MARK: - Methods
     func bindCatalogViewController(type: [String], isSelected: String?) {
-        sizeContentStack.subviews.forEach { $0.removeFromSuperview() }
-        sizeContentStack.subviews.forEach { sizeContentStack.removeArrangedSubview($0) }
+        clothesContentStack.subviews.forEach { $0.removeFromSuperview() }
+        clothesContentStack.subviews.forEach { clothesContentStack.removeArrangedSubview($0) }
         
         for type in typeOfClothes {
             let view = ClothesTypeEntityView()
             view.delegate = self
             view.bindTypeEntityView(type: type, isSelected: isSelected == type)
-            sizeContentStack.addArrangedSubview(view)
+            clothesContentStack.addArrangedSubview(view)
         }
     }
 }
@@ -64,9 +95,36 @@ extension CatalogViewController: ClothesTypeEntityViewDelegate {
 
 extension CatalogViewController {
     
+    private func setupTableView() {
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.id)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
     private func setupUI() {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
+        
+        
+        //add sizeScroll
+        containerView.addSubview(clothesScrollView)
+        clothesScrollView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(12)
+            make.leading.trailing.equalToSuperview()
+        }
+        
+        clothesScrollView.addSubview(clothesContentStack)
+        clothesContentStack.snp.makeConstraints { make in
+            make.edges.equalTo(clothesScrollView.contentLayoutGuide)
+            make.height.equalTo(clothesScrollView.snp.height)
+        }
+        
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(58)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
         
         view.addSubview(containerView)
         containerView.snp.makeConstraints { make in
@@ -74,17 +132,24 @@ extension CatalogViewController {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(58)
         }
-        //add sizeScroll
-        containerView.addSubview(sizeScrollView)
-        sizeScrollView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(12)
-            make.leading.trailing.equalToSuperview()
-        }
-        
-        sizeScrollView.addSubview(sizeContentStack)
-        sizeContentStack.snp.makeConstraints { make in
-            make.edges.equalTo(sizeScrollView.contentLayoutGuide)
-            make.height.equalTo(sizeScrollView.snp.height)
-        }
+    }
+}
+
+extension CatalogViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        clothes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.id, for: indexPath) as? TableViewCell else {return UITableViewCell()}
+        cell.selectionStyle = .none
+        let data = clothes[indexPath.row]
+        cell.configureCell(image: data.image,
+                           title: data.title,
+                           description: data.description,
+                           price: data.price,
+                           btnTextColor: Resources.FigmaColors.secondaryButtonTitleBrown,
+                           btnFont: UIFont.systemFont(ofSize: 15, weight: .semibold))
+        return cell
     }
 }

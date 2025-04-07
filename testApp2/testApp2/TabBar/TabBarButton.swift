@@ -60,7 +60,5 @@ class TabBarButton: UIButton {
         self.image.image = image
         self.label.text = title
     }
-    
-    
 }
 

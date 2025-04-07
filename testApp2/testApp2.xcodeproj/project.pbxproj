@@ -19,13 +19,15 @@
 		B10C71BD2D8C2C1300DD41B6 /* SFProText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B10C71B02D8C286200DD41B6 /* SFProText-Bold.ttf */; };
 		B10C71BE2D8C2C1300DD41B6 /* SFProText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B10C71B82D8C286200DD41B6 /* SFProText-Regular.ttf */; };
 		B10C71BF2D8C2F8B00DD41B6 /* SFProText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B10C71BA2D8C286200DD41B6 /* SFProText-Semibold.ttf */; };
-		B10C71C12D8E96D100DD41B6 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71C02D8E96D100DD41B6 /* InfoButton.swift */; };
+		B10C71C12D8E96D100DD41B6 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71C02D8E96D100DD41B6 /* SecondaryButton.swift */; };
 		B10C71C32D8FDF5B00DD41B6 /* SizeEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71C22D8FDF5B00DD41B6 /* SizeEntityView.swift */; };
 		B10C71C52D910B7900DD41B6 /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71C42D910B7900DD41B6 /* View+extension.swift */; };
 		B10C71E22D9D45DF00DD41B6 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71E12D9D45DF00DD41B6 /* BasketViewController.swift */; };
 		B10C71E52D9D465A00DD41B6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71E42D9D465A00DD41B6 /* TabBarController.swift */; };
 		B10C71E72D9D467E00DD41B6 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71E62D9D467E00DD41B6 /* TabBarButton.swift */; };
 		B16D75D12D9E40D600B741E6 /* ClothesTypeEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */; };
+		B16D75D32DA0FA0800B741E6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D22DA0FA0800B741E6 /* TableViewCell.swift */; };
+		B16D75D52DA1468000B741E6 /* UIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D42DA1468000B741E6 /* UIModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,13 +53,15 @@
 		B10C71B92D8C286200DD41B6 /* SFProText-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-RegularItalic.ttf"; sourceTree = "<group>"; };
 		B10C71BA2D8C286200DD41B6 /* SFProText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.ttf"; sourceTree = "<group>"; };
 		B10C71BB2D8C286200DD41B6 /* SFProText-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-SemiboldItalic.ttf"; sourceTree = "<group>"; };
-		B10C71C02D8E96D100DD41B6 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
+		B10C71C02D8E96D100DD41B6 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		B10C71C22D8FDF5B00DD41B6 /* SizeEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeEntityView.swift; sourceTree = "<group>"; };
 		B10C71C42D910B7900DD41B6 /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
 		B10C71E12D9D45DF00DD41B6 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 		B10C71E42D9D465A00DD41B6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B10C71E62D9D467E00DD41B6 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 		B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesTypeEntityView.swift; sourceTree = "<group>"; };
+		B16D75D22DA0FA0800B741E6 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		B16D75D42DA1468000B741E6 /* UIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +110,6 @@
 			children = (
 				B10C71E02D9D457700DD41B6 /* BasketViewController */,
 				B10C71922D8C218E00DD41B6 /* CatalogViewController */,
-				B10C71912D8C217200DD41B6 /* ProductViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -145,6 +148,9 @@
 			children = (
 				B10C717A2D8918F800DD41B6 /* CatalogViewController.swift */,
 				B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */,
+				B16D75D22DA0FA0800B741E6 /* TableViewCell.swift */,
+				B16D75D42DA1468000B741E6 /* UIModel.swift */,
+				B10C71912D8C217200DD41B6 /* ProductViewController */,
 			);
 			path = CatalogViewController;
 			sourceTree = "<group>";
@@ -153,7 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				B10C71942D8C21C500DD41B6 /* PrimaryButton.swift */,
-				B10C71C02D8E96D100DD41B6 /* InfoButton.swift */,
+				B10C71C02D8E96D100DD41B6 /* SecondaryButton.swift */,
 				B10C71C22D8FDF5B00DD41B6 /* SizeEntityView.swift */,
 			);
 			path = Views;
@@ -276,10 +282,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B10C71E22D9D45DF00DD41B6 /* BasketViewController.swift in Sources */,
-				B10C71C12D8E96D100DD41B6 /* InfoButton.swift in Sources */,
+				B10C71C12D8E96D100DD41B6 /* SecondaryButton.swift in Sources */,
 				B10C71E52D9D465A00DD41B6 /* TabBarController.swift in Sources */,
 				B10C71952D8C21C500DD41B6 /* PrimaryButton.swift in Sources */,
 				B10C71C32D8FDF5B00DD41B6 /* SizeEntityView.swift in Sources */,
+				B16D75D32DA0FA0800B741E6 /* TableViewCell.swift in Sources */,
+				B16D75D52DA1468000B741E6 /* UIModel.swift in Sources */,
 				B10C71E72D9D467E00DD41B6 /* TabBarButton.swift in Sources */,
 				B10C71752D89166C00DD41B6 /* AppDelegate.swift in Sources */,
 				B10C71762D89166C00DD41B6 /* SceneDelegate.swift in Sources */,
