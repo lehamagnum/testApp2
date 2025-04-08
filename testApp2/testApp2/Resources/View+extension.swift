@@ -17,5 +17,4 @@ extension UIView {
         layer.shadowRadius = 3
         layer.shadowOpacity = 0.1
     }
-    
 }

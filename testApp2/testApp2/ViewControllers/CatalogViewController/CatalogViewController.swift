@@ -9,31 +9,28 @@ import Foundation
 import UIKit
 import SnapKit
 
-let screenWidth = UIScreen.main.bounds.width
-
 class CatalogViewController: UIViewController {
     
     private let typeOfClothes = ["Каталог", "Новинки","Джинсы", "Футболки"]
     
     private let clothes = [
-        UIModel(image: Resources.Images.blazer,
+        ProductModel(image: Resources.Images.blazer,
                        title: "Блейзер прямого кроя",
                        description: "Двубортный блейзер на основе лиоцелла и вискозы.",
                        price: "2 970 р"),
-        UIModel(image: Resources.Images.pants,
+        ProductModel(image: Resources.Images.pants,
                        title: "Брюки из лиоцелла",
                        description: "Брюки прямого кроя из ткани.",
                        price: "5000 р"),
-        UIModel(image: Resources.Images.tshort,
+        ProductModel(image: Resources.Images.tshort,
                        title: "Кардиган из хлопка",
                        description: "Короткие рукава. Застежка на пуговицы.",
                        price: "14 999 р"),
-        UIModel(image: Resources.Images.jeans,
+        ProductModel(image: Resources.Images.jeans,
                        title: "Джинсы straight fit",
                        description: "Пять карманов. Джинсы моднячие.",
                        price: "50 000 р"),
     ]
-    
     
     // MARK: - UIElements
     private lazy var containerView: UIView = {
@@ -46,6 +43,7 @@ class CatalogViewController: UIViewController {
     private lazy var clothesScrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.showsHorizontalScrollIndicator = false
+        scroll.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         return scroll
     }()
     
@@ -60,8 +58,6 @@ class CatalogViewController: UIViewController {
         let table = UITableView()
         table.separatorStyle = .none
         table.showsVerticalScrollIndicator = false
-        table.rowHeight = UITableView.automaticDimension
-        table.estimatedRowHeight = 136
         return table
     }()
     // MARK: - Lifecycle
@@ -69,7 +65,9 @@ class CatalogViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        registerCell()
         setupTableView()
+        registerCells()
         bindCatalogViewController(type: typeOfClothes, isSelected: typeOfClothes[0])
     }
     
@@ -95,29 +93,22 @@ extension CatalogViewController: ClothesTypeEntityViewDelegate {
 
 extension CatalogViewController {
     
+    private func registerCell() {
+        tableView.register(CatalogProductCell.self, forCellReuseIdentifier: CatalogProductCell.cellId)
+    }
+    
     private func setupTableView() {
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.id)
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
+
+    private func registerCells() {
+        tableView.register(CatalogProductCell.self, forCellReuseIdentifier: CatalogProductCell.cellId)
+    }
+
     private func setupUI() {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
-        
-        
-        //add sizeScroll
-        containerView.addSubview(clothesScrollView)
-        clothesScrollView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(12)
-            make.leading.trailing.equalToSuperview()
-        }
-        
-        clothesScrollView.addSubview(clothesContentStack)
-        clothesContentStack.snp.makeConstraints { make in
-            make.edges.equalTo(clothesScrollView.contentLayoutGuide)
-            make.height.equalTo(clothesScrollView.snp.height)
-        }
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
@@ -132,6 +123,18 @@ extension CatalogViewController {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(58)
         }
+        //add sizeScroll
+        containerView.addSubview(clothesScrollView)
+        clothesScrollView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.bottom.equalToSuperview().inset(12)
+        }
+        
+        clothesScrollView.addSubview(clothesContentStack)
+        clothesContentStack.snp.makeConstraints { make in
+            make.edges.equalTo(clothesScrollView.contentLayoutGuide)
+            make.height.equalTo(clothesScrollView.snp.height)
+        }
     }
 }
 
@@ -141,15 +144,27 @@ extension CatalogViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.id, for: indexPath) as? TableViewCell else {return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CatalogProductCell.cellId, for: indexPath) as? CatalogProductCell else {return UITableViewCell()}
         cell.selectionStyle = .none
+        cell.delegate = self
         let data = clothes[indexPath.row]
-        cell.configureCell(image: data.image,
+        
+        cell.configureCell(productId: UUID().uuidString,
+                           image: data.image,
                            title: data.title,
                            description: data.description,
                            price: data.price,
                            btnTextColor: Resources.FigmaColors.secondaryButtonTitleBrown,
                            btnFont: UIFont.systemFont(ofSize: 15, weight: .semibold))
         return cell
+    }
+}
+
+extension CatalogViewController: CatalogProductCellDelegate {
+    
+    func didTapButton(productId: String) {
+        let viewController = ProductViewController(productId: productId)
+        viewController.productId = productId
+        present(viewController, animated: true)
     }
 }

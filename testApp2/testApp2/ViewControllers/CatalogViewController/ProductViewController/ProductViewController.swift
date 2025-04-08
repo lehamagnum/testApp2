@@ -10,9 +10,12 @@ import SnapKit
 
 class ProductViewController: UIViewController {
     // MARK: - Variables
+
     private let sizes = ["XXS","XS", "S", "M", "L", "XL", "XXL"]
     
     private var selectedSize: String?
+    
+    var productId: String
     
     // MARK: - UIElements
     
@@ -118,6 +121,15 @@ class ProductViewController: UIViewController {
         return stack
     }()
     
+    init(productId: String) {
+        self.productId = productId
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -140,17 +152,15 @@ class ProductViewController: UIViewController {
             sizeContentStack.addArrangedSubview(view)
             
         }
-    
     }
-    
 }
 
 extension ProductViewController: SizeEntityViewDelegate {
     
     func didSelectSize(with size: String) {
         bind(sizes: sizes, selectedSize: size)
+        debugPrint("selected size: \(size), \(productId)")
     }
-
 }
 
 extension ProductViewController {

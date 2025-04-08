@@ -26,8 +26,8 @@
 		B10C71E52D9D465A00DD41B6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71E42D9D465A00DD41B6 /* TabBarController.swift */; };
 		B10C71E72D9D467E00DD41B6 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71E62D9D467E00DD41B6 /* TabBarButton.swift */; };
 		B16D75D12D9E40D600B741E6 /* ClothesTypeEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */; };
-		B16D75D32DA0FA0800B741E6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D22DA0FA0800B741E6 /* TableViewCell.swift */; };
-		B16D75D52DA1468000B741E6 /* UIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D42DA1468000B741E6 /* UIModel.swift */; };
+		B16D75D32DA0FA0800B741E6 /* CatalogProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D22DA0FA0800B741E6 /* CatalogProductCell.swift */; };
+		B16D75D52DA1468000B741E6 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D42DA1468000B741E6 /* ProductModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,8 +60,8 @@
 		B10C71E42D9D465A00DD41B6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B10C71E62D9D467E00DD41B6 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 		B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesTypeEntityView.swift; sourceTree = "<group>"; };
-		B16D75D22DA0FA0800B741E6 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		B16D75D42DA1468000B741E6 /* UIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIModel.swift; sourceTree = "<group>"; };
+		B16D75D22DA0FA0800B741E6 /* CatalogProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogProductCell.swift; sourceTree = "<group>"; };
+		B16D75D42DA1468000B741E6 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +148,8 @@
 			children = (
 				B10C717A2D8918F800DD41B6 /* CatalogViewController.swift */,
 				B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */,
-				B16D75D22DA0FA0800B741E6 /* TableViewCell.swift */,
-				B16D75D42DA1468000B741E6 /* UIModel.swift */,
+				B16D75D22DA0FA0800B741E6 /* CatalogProductCell.swift */,
+				B16D75D42DA1468000B741E6 /* ProductModel.swift */,
 				B10C71912D8C217200DD41B6 /* ProductViewController */,
 			);
 			path = CatalogViewController;
@@ -286,8 +286,8 @@
 				B10C71E52D9D465A00DD41B6 /* TabBarController.swift in Sources */,
 				B10C71952D8C21C500DD41B6 /* PrimaryButton.swift in Sources */,
 				B10C71C32D8FDF5B00DD41B6 /* SizeEntityView.swift in Sources */,
-				B16D75D32DA0FA0800B741E6 /* TableViewCell.swift in Sources */,
-				B16D75D52DA1468000B741E6 /* UIModel.swift in Sources */,
+				B16D75D32DA0FA0800B741E6 /* CatalogProductCell.swift in Sources */,
+				B16D75D52DA1468000B741E6 /* ProductModel.swift in Sources */,
 				B10C71E72D9D467E00DD41B6 /* TabBarButton.swift in Sources */,
 				B10C71752D89166C00DD41B6 /* AppDelegate.swift in Sources */,
 				B10C71762D89166C00DD41B6 /* SceneDelegate.swift in Sources */,

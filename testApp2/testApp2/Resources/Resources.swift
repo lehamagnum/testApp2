@@ -10,6 +10,8 @@ import UIKit
 
 struct Resources {
     
+    static let screenWidth = UIScreen.main.bounds.width
+    
     struct Images {
         
         static let itemImage = UIImage(named: "itemImage")
