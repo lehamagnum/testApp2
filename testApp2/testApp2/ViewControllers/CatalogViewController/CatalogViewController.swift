@@ -70,6 +70,7 @@ class CatalogViewController: UIViewController {
         
         setupUI()
         setupTableView()
+        registerCells()
         bindCatalogViewController(type: typeOfClothes, isSelected: typeOfClothes[0])
     }
     
@@ -96,11 +97,14 @@ extension CatalogViewController: ClothesTypeEntityViewDelegate {
 extension CatalogViewController {
     
     private func setupTableView() {
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.id)
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
+
+    private func registerCells() {
+        tableView.register(CatalogProductCell.self, forCellReuseIdentifier: CatalogProductCell.id)
+    }
+
     private func setupUI() {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
@@ -109,7 +113,8 @@ extension CatalogViewController {
         //add sizeScroll
         containerView.addSubview(clothesScrollView)
         clothesScrollView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(12)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(12)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview()
         }
         
@@ -141,15 +146,27 @@ extension CatalogViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.id, for: indexPath) as? TableViewCell else {return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CatalogProductCell.id, for: indexPath) as? CatalogProductCell else {return UITableViewCell()}
         cell.selectionStyle = .none
+        cell.delegate = self
         let data = clothes[indexPath.row]
-        cell.configureCell(image: data.image,
+        cell.configureCell(productId: UUID().uuidString,
+                           image: data.image,
                            title: data.title,
                            description: data.description,
                            price: data.price,
                            btnTextColor: Resources.FigmaColors.secondaryButtonTitleBrown,
                            btnFont: UIFont.systemFont(ofSize: 15, weight: .semibold))
         return cell
+    }
+}
+
+extension CatalogViewController: CatalogProductCellDelegate {
+
+    func didTapButton(productId: String) {
+        print("productId: \(productId)")
+        let viewController = ProductViewController(productId: productId)
+        viewController.productIdd = productId
+        present(viewController, animated: true)
     }
 }

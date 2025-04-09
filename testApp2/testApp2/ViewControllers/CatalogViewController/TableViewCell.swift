@@ -8,65 +8,74 @@
 import Foundation
 import UIKit
 
-class TableViewCell: UITableViewCell {
-    
+protocol CatalogProductCellDelegate: AnyObject {
+
+    func didTapButton(productId: String)
+}
+
+class CatalogProductCell: UITableViewCell {
+
+    weak var delegate: CatalogProductCellDelegate?
+
+    private var productId: String?
+
     static let id = "TableViewCell"
-    
-    private lazy var contentViewCell: UIView = {
+
+    private lazy var containerView: UIView = {
         let view = UIView()
-        view.setContentHuggingPriority(.defaultLow, for: .vertical)
+        view.backgroundColor = .red
         return view
     }()
-    
-    private lazy var image: UIImageView = {
-        let image = UIImageView()
-//        image.setContentHuggingPriority(.defaultLow, for: .vertical)
-        return image
+
+    private lazy var productImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .blue
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
-    
-    private lazy var descriptionView: UIView = {
-        let view = UIView()
-        return view
+
+    private lazy var textStack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        return stackView
     }()
-    
-    private lazy var titleLable: UILabel = {
-        let lable = UILabel()
-        lable.textColor = Resources.FigmaColors.blackLabelColor
-        lable.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        lable.numberOfLines = 0
-        lable.setContentHuggingPriority(.defaultLow, for: .vertical)
-        return lable
+
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .green
+        label.font = .systemFont(ofSize: 18, weight: .semibold)
+        label.textColor = .black
+        label.numberOfLines = 2
+        label.text = Bool.random() ? "Title" : "Title Title Title Title Title Title Title Title"
+        return label
     }()
-    
-    private lazy var descriptionLable: UILabel = {
-        let lable = UILabel()
-        lable.textColor = Resources.FigmaColors.descriptionColor
-        lable.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        lable.numberOfLines = 0
-        return lable
+
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .yellow
+        label.font = .systemFont(ofSize: 15, weight: .regular)
+        label.textColor = .gray
+        label.numberOfLines = 0
+        label.text = Bool.random() ? "Description" : "Description Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description Description"
+        return label
     }()
-    
-    private lazy var priceButton: SecondaryButton = {
-        let but = SecondaryButton()
-        let action = UIAction { action in
-            debugPrint("Кнопка цены нажата")
+
+    private lazy var buyButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .purple
+        button.setTitle("Button", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        let action = UIAction { [weak self] action in
+            guard let self, let productId else {
+                return
+            }
+            delegate?.didTapButton(productId: productId)
         }
-        but.addAction(action, for: .primaryActionTriggered)
-        but.backgroundColor = Resources.FigmaColors.secondaryButtonBG
-        but.layer.cornerRadius = 4
-        return but
+        button.addAction(action, for: .primaryActionTriggered)
+        return button
     }()
-    
-    private lazy var spacerViewBottom: UIView = {
-        let spacer = UIView()
-        return spacer
-    }()
-    
-    private lazy var spacerViewTop: UIView = {
-        let spacer = UIView()
-        return spacer
-    }()
-    
+
     // MARK: - Lifecycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -78,71 +87,42 @@ class TableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(image: UIImage?, title: String, description: String, price: String, btnTextColor: UIColor?, btnFont: UIFont) {
-        self.image.image = image
-        self.titleLable.text = title
-        self.descriptionLable.text = description
-        self.priceButton.configureButton(title: price, textColor: btnTextColor, font: btnFont)
+    func configureCell(productId: String?, image: UIImage?, title: String, description: String, price: String, btnTextColor: UIColor?, btnFont: UIFont) {
+        self.productId = productId
     }
 }
 
-extension TableViewCell {
+extension CatalogProductCell {
     
     private func setupUI() {
+        contentView.addSubview(containerView)
+        containerView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(12)
+            make.leading.trailing.equalToSuperview().inset(16)
+        }
 
-        addSubview(contentViewCell)
-        contentViewCell.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        contentViewCell.addSubview(spacerViewTop)
-        spacerViewTop.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
-            make.height.equalTo(16)
-        }
-        
-        contentViewCell.addSubview(spacerViewBottom)
-        spacerViewBottom.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(16)
-        }
-        
-        contentViewCell.addSubview(image)
-        image.snp.makeConstraints { make in
-            make.width.equalTo(136)
+        containerView.addSubview(productImageView)
+        productImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
             make.leading.equalToSuperview()
-            make.bottom.equalTo(spacerViewBottom.snp.top)
-            make.top.equalTo(spacerViewTop.snp.bottom)
+            make.height.width.equalTo(136)
+            make.bottom.lessThanOrEqualToSuperview().inset(10)
         }
-        
-        contentViewCell.addSubview(descriptionView)
-        descriptionView.snp.makeConstraints { make in
-            make.top.equalTo(spacerViewTop.snp.bottom)
+
+        containerView.addSubview(textStack)
+        textStack.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalTo(productImageView.snp.trailing).offset(12)
             make.trailing.equalToSuperview()
-            make.leading.equalTo(image.snp.trailing).offset(12)
         }
-        
-        descriptionView.addSubview(titleLable)
-        titleLable.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-        }
-        
-        descriptionView.addSubview(descriptionLable)
-        descriptionLable.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalTo(titleLable.snp.bottom).offset(8)
-        }
-        
-        descriptionView.addSubview(priceButton)
-        priceButton.snp.makeConstraints { make in
-            make.leading.bottom.equalToSuperview()
-//            make.bottom.equalTo(spacerViewBottom.snp.top)
+
+        containerView.addSubview(buyButton)
+        buyButton.snp.makeConstraints { make in
+            make.top.equalTo(textStack.snp.bottom).offset(16)
+            make.leading.equalTo(productImageView.snp.trailing).offset(12)
             make.height.equalTo(40)
-            make.width.equalTo(96)
-            make.top.equalTo(descriptionLable.snp.bottom).offset(16)
+            make.bottom.equalToSuperview()
         }
-        
-        self.contentView.isUserInteractionEnabled = false
     }
     
 //    Надо переверстать, может быть поможет, примерно такая же ячейка, не говорю что она идеальная, но для констрейнтов подойдет:
