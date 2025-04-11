@@ -46,15 +46,13 @@ class CatalogProductCell: UITableViewCell {
         lable.setContentHuggingPriority(.defaultLow, for: .vertical)
         return lable
     }()
-
-    private lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .yellow
-        label.font = .systemFont(ofSize: 15, weight: .regular)
-        label.textColor = .gray
-        label.numberOfLines = 0
-        label.text = Bool.random() ? "Description" : "Description Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description Description"
-        return label
+    
+    private lazy var descriptionLable: UILabel = {
+        let lable = UILabel()
+        lable.textColor = Resources.FigmaColors.descriptionColor
+        lable.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        lable.numberOfLines = 0
+        return lable
     }()
     
     private lazy var priceButton: SecondaryButton = {
@@ -63,8 +61,10 @@ class CatalogProductCell: UITableViewCell {
             guard let self, let productId else { return }
             delegate?.didTapButton(productId: productId)
         }
-        button.addAction(action, for: .primaryActionTriggered)
-        return button
+        but.addAction(action, for: .primaryActionTriggered)
+        but.backgroundColor = Resources.FigmaColors.secondaryButtonBG
+        but.layer.cornerRadius = 4
+        return but
     }()
     
 
@@ -94,11 +94,6 @@ class CatalogProductCell: UITableViewCell {
 extension CatalogProductCell {
     
     private func setupUI() {
-        contentView.addSubview(containerView)
-        containerView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(12)
-            make.leading.trailing.equalToSuperview().inset(16)
-        }
 
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints { make in
@@ -141,122 +136,4 @@ extension CatalogProductCell {
             
         }
     }
-    
-//    Надо переверстать, может быть поможет, примерно такая же ячейка, не говорю что она идеальная, но для констрейнтов подойдет:
-//    // MARK: - UI elements
-//    
-//    /// Фото товара
-//    private lazy var imageView: UIImageView = {
-//        let view = UIImageView(frame: .zero)
-//        view.backgroundColor = Colors.white.ui
-//        view.contentMode = .scaleAspectFit
-//        view.clipsToBounds = true
-//        view.layer.cornerRadius = 10
-//        return view
-//    }()
-//    
-//    /// Только самовывоз
-//    private lazy var pickupTagView = PickupOnlyTagView()
-//    
-//    /// Стэк с названием и описанием
-//    private lazy var descriptionStack: UIStackView = {
-//        let stackView = UIStackView(arrangedSubviews: [titleLabel, descrLabel])
-//        stackView.backgroundColor = Colors.white.ui
-//        stackView.axis = .vertical
-//        stackView.spacing = 8
-//        stackView.clipsToBounds = true
-//        return stackView
-//    }()
-//    
-//    /// Название товара
-//    private lazy var titleLabel: UILabel = {
-//        let label = UILabel()
-//        label.backgroundColor = Colors.white.ui
-//        label.font = .pantonFont(ofSize: 18, weight: .semibold)
-//        label.textColor = Colors.blackTitle.ui
-//        label.numberOfLines = 0
-//        return label
-//    }()
-//    
-//    /// Описание товара
-//    private lazy var descrLabel: UILabel = {
-//        let label = UILabel()
-//        label.backgroundColor = Colors.white.ui
-//        label.font = .systemFont(ofSize: 15, weight: .regular)
-//        label.textColor = Colors.gray.ui
-//        label.numberOfLines = 0
-//        return label
-//    }()
-//    
-//    /// Цена/ Скоро появится/ счетчик
-//    private lazy var priceView: PriceView = {
-//        let view = PriceView()
-//        view.layer.cornerRadius = 20
-//        view.clipsToBounds = true
-//        view.delegate = self
-//        return view
-//    }()
-//    
-//    /// теги
-//    fileprivate let tagsView: NewVoblerView = {
-//        let view = NewVoblerView()
-//        return view
-//    }()
-//    
-//    // MARK: - Lifecycle
-//    
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        commonInit()
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//        commonInit()
-//    }
-//    
-//    // MARK: - Init
-//    
-//    private func commonInit() {
-//        
-//        addSubview(imageView)
-//        imageView.snp.makeConstraints { make in
-//            make.width.equalTo(UIScreen.main.bounds.width * 0.36)
-//            make.height.equalTo(UIScreen.main.bounds.width * 0.36)
-//            make.left.equalToSuperview()
-//            make.top.equalToSuperview()
-//            make.bottom.lessThanOrEqualToSuperview().inset(10)
-//        }
-//        
-//        addSubview(descriptionStack)
-//        descriptionStack.snp.makeConstraints { make in
-//            make.top.equalToSuperview()
-//            make.left.equalTo(imageView.snp.right).offset(12)
-//            make.right.equalToSuperview().inset(16)
-//        }
-//        
-//        addSubview(priceView)
-//        priceView.snp.makeConstraints { make in
-//            make.height.equalTo(40)
-//            make.left.equalTo(imageView.snp.right).inset(-12)
-//            make.top.greaterThanOrEqualTo(descriptionStack.snp.bottom).inset(-16)
-//            make.bottom.equalToSuperview()
-//        }
-//        
-//        addSubview(pickupTagView)
-//        pickupTagView.snp.makeConstraints { make in
-//            make.left.equalTo(imageView.snp.left).inset(5)
-//            make.right.equalTo(imageView.snp.right).inset(5)
-//            make.bottom.equalTo(imageView.snp.bottom)
-//        }
-//        
-//        addSubview(tagsView)
-//        tagsView.snp.makeConstraints { make in
-//            make.top.equalTo(imageView.snp.top)
-//            make.left.equalTo(imageView.snp.left)
-//            make.right.equalTo(imageView.snp.right)
-//            make.bottom.equalTo(imageView.snp.bottom).inset(8).priority(.init(250))
-//            make.bottom.equalTo(pickupTagView.snp.top).inset(-8).priority(.init(251))
-//        }
-//    }
 }
