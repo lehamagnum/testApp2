@@ -9,46 +9,42 @@ import Foundation
 import UIKit
 
 protocol CatalogProductCellDelegate: AnyObject {
-
+    
     func didTapButton(productId: String)
 }
 
 class CatalogProductCell: UITableViewCell {
-
-    weak var delegate: CatalogProductCellDelegate?
-
+    //MARK: - Variables
+    static let cellId = "TableViewCell"
+    
     private var productId: String?
-
-    static let id = "TableViewCell"
-
+    
+    weak var delegate: CatalogProductCellDelegate?
+    
+    //MARK: - UIelements
     private lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
         return view
     }()
-
+    
     private lazy var productImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .blue
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        return image
     }()
-
-    private lazy var textStack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
-        stackView.axis = .vertical
-        stackView.spacing = 8
-        return stackView
+    
+    private lazy var descriptionContainerView: UIView = {
+        let view = UIView()
+        return view
     }()
-
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .green
-        label.font = .systemFont(ofSize: 18, weight: .semibold)
-        label.textColor = .black
-        label.numberOfLines = 2
-        label.text = Bool.random() ? "Title" : "Title Title Title Title Title Title Title Title"
-        return label
+    
+    private lazy var titleLable: UILabel = {
+        let lable = UILabel()
+        lable.textColor = Resources.FigmaColors.blackLabelColor
+        lable.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        lable.numberOfLines = 2
+        lable.setContentHuggingPriority(.defaultLow, for: .vertical)
+        return lable
     }()
 
     private lazy var descriptionLabel: UILabel = {
@@ -60,22 +56,19 @@ class CatalogProductCell: UITableViewCell {
         label.text = Bool.random() ? "Description" : "Description Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description DescriDescription Description Description Description Description"
         return label
     }()
-
-    private lazy var buyButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .purple
-        button.setTitle("Button", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+    
+    private lazy var priceButton: SecondaryButton = {
+        let but = SecondaryButton()
         let action = UIAction { [weak self] action in
-            guard let self, let productId else {
-                return
-            }
+            guard let self, let productId else { return }
             delegate?.didTapButton(productId: productId)
         }
         button.addAction(action, for: .primaryActionTriggered)
         return button
     }()
+    
 
+    
     // MARK: - Lifecycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -87,10 +80,16 @@ class CatalogProductCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(productId: String?, image: UIImage?, title: String, description: String, price: String, btnTextColor: UIColor?, btnFont: UIFont) {
+    //MARK: - Methods
+    
+    func configureCell(productId: String, image: UIImage?, title: String, description: String, price: String, btnTextColor: UIColor?, btnFont: UIFont) {
         self.productId = productId
+        self.productImageView.image = image
+        self.titleLable.text = title
+        self.descriptionLable.text = description
+        self.priceButton.configureButton(title: price, textColor: btnTextColor, font: btnFont)
     }
-}
+  }
 
 extension CatalogProductCell {
     
@@ -101,27 +100,45 @@ extension CatalogProductCell {
             make.leading.trailing.equalToSuperview().inset(16)
         }
 
+        contentView.addSubview(containerView)
+        containerView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.bottom.equalToSuperview().inset(16)
+        }
+        
         containerView.addSubview(productImageView)
         productImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.height.width.equalTo(136)
-            make.bottom.lessThanOrEqualToSuperview().inset(10)
+            make.width.equalTo(UIScreen.main.bounds.width * 0.39)
+            make.leading.top.equalToSuperview()
+            make.bottom.lessThanOrEqualToSuperview()
+            
         }
-
-        containerView.addSubview(textStack)
-        textStack.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+        
+        containerView.addSubview(descriptionContainerView)
+        descriptionContainerView.snp.makeConstraints { make in
             make.leading.equalTo(productImageView.snp.trailing).offset(12)
-            make.trailing.equalToSuperview()
+            make.trailing.top.equalToSuperview()
+            make.bottom.lessThanOrEqualToSuperview()
         }
-
-        containerView.addSubview(buyButton)
-        buyButton.snp.makeConstraints { make in
-            make.top.equalTo(textStack.snp.bottom).offset(16)
-            make.leading.equalTo(productImageView.snp.trailing).offset(12)
+        
+        descriptionContainerView.addSubview(titleLable)
+        titleLable.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+        }
+        
+        descriptionContainerView.addSubview(descriptionLable)
+        descriptionLable.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(titleLable.snp.bottom).offset(8)
+        }
+        
+        descriptionContainerView.addSubview(priceButton)
+        priceButton.snp.makeConstraints { make in
+            make.leading.bottom.equalToSuperview()
+            make.top.equalTo(descriptionLable.snp.bottom).offset(16)
             make.height.equalTo(40)
-            make.bottom.equalToSuperview()
+            make.width.equalTo(96)
+            
         }
     }
     

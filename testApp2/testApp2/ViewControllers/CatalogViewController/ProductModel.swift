@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct UIModel {
+struct ProductModel {
     
     var image: UIImage?
     var title: String

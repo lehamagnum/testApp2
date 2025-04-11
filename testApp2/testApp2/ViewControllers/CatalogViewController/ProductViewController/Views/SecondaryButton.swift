@@ -51,8 +51,4 @@ class SecondaryButton: UIButton {
         label.textColor = textColor
         label.font = font
     }
-    
-    
-    
-    
 }

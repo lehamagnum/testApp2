@@ -18,6 +18,8 @@ class ProductViewController: UIViewController {
     
     private var selectedSize: String?
     
+    var productId: String
+    
     // MARK: - UIElements
     
     private lazy var containerView: UIView = {
@@ -121,6 +123,15 @@ class ProductViewController: UIViewController {
         stack.spacing = 8
         return stack
     }()
+    
+    init(productId: String) {
+        self.productId = productId
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
 
