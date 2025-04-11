@@ -67,8 +67,6 @@ class CatalogProductCell: UITableViewCell {
         return but
     }()
     
-
-    
     // MARK: - Lifecycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -89,7 +87,7 @@ class CatalogProductCell: UITableViewCell {
         self.descriptionLable.text = description
         self.priceButton.configureButton(title: price, textColor: btnTextColor, font: btnFont)
     }
-  }
+}
 
 extension CatalogProductCell {
     

@@ -103,7 +103,7 @@ extension CatalogViewController {
     }
 
     private func registerCells() {
-        tableView.register(CatalogProductCell.self, forCellReuseIdentifier: CatalogProductCell.id)
+        tableView.register(CatalogProductCell.self, forCellReuseIdentifier: CatalogProductCell.cellId)
     }
 
     private func setupUI() {

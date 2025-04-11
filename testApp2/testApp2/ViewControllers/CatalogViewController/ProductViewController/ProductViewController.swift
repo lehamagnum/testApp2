@@ -11,9 +11,6 @@ import SnapKit
 class ProductViewController: UIViewController {
     // MARK: - Variables
 
-    var productIdd: String?
-    private let productId: String
-
     private let sizes = ["XXS","XS", "S", "M", "L", "XL", "XXL"]
     
     private var selectedSize: String?
@@ -134,15 +131,6 @@ class ProductViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
-
-    init(productId: String) {
-        self.productId = productId
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,18 +152,15 @@ class ProductViewController: UIViewController {
             sizeContentStack.addArrangedSubview(view)
             
         }
-    
     }
-    
 }
 
 extension ProductViewController: SizeEntityViewDelegate {
     
     func didSelectSize(with size: String) {
         bind(sizes: sizes, selectedSize: size)
-        debugPrint("selected size: \(size), \(productId), \(productIdd ?? "")")
+        debugPrint("selected size: \(size), \(productId)")
     }
-
 }
 
 extension ProductViewController {
