@@ -13,24 +13,7 @@ class CatalogViewController: UIViewController {
     
     private let typeOfClothes = ["Каталог", "Новинки","Джинсы", "Футболки"]
     
-    private let clothes = [
-        ProductModel(image: Resources.Images.blazer,
-                       title: "Блейзер прямого кроя",
-                       description: "Двубортный блейзер на основе лиоцелла и вискозы.",
-                       price: "2 970 р"),
-        ProductModel(image: Resources.Images.pants,
-                       title: "Брюки из лиоцелла",
-                       description: "Брюки прямого кроя из ткани.",
-                       price: "5000 р"),
-        ProductModel(image: Resources.Images.tshort,
-                       title: "Кардиган из хлопка",
-                       description: "Короткие рукава. Застежка на пуговицы.",
-                       price: "14 999 р"),
-        ProductModel(image: Resources.Images.jeans,
-                       title: "Джинсы straight fit",
-                       description: "Пять карманов. Джинсы моднячие.",
-                       price: "50 000 р"),
-    ]
+    var data: [TestModel] = []
     
     // MARK: - UIElements
     private lazy var containerView: UIView = {
@@ -69,6 +52,18 @@ class CatalogViewController: UIViewController {
         setupTableView()
         registerCells()
         bindCatalogViewController(type: typeOfClothes, isSelected: typeOfClothes[0])
+        
+        NetworkRequest.shared.getData { result in
+            switch result {
+            case .success(let JSONdata):
+
+                self.data = JSONdata
+                print("\(JSONdata)")
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     // MARK: - Methods
@@ -140,22 +135,21 @@ extension CatalogViewController {
 
 extension CatalogViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        clothes.count
+        data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CatalogProductCell.cellId, for: indexPath) as? CatalogProductCell else {return UITableViewCell()}
         cell.selectionStyle = .none
         cell.delegate = self
-        let data = clothes[indexPath.row]
         
-        cell.configureCell(productId: UUID().uuidString,
-                           image: data.image,
-                           title: data.title,
-                           description: data.description,
-                           price: data.price,
+        let data = self.data[indexPath.row]
+        
+        cell.configureCell(title: data.title,
+                           description: data.body,
                            btnTextColor: Resources.FigmaColors.secondaryButtonTitleBrown,
                            btnFont: UIFont.systemFont(ofSize: 15, weight: .semibold))
+        
         return cell
     }
 }

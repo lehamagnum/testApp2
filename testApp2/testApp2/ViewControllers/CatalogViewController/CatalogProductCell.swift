@@ -80,13 +80,21 @@ class CatalogProductCell: UITableViewCell {
     
     //MARK: - Methods
     
-    func configureCell(productId: String, image: UIImage?, title: String, description: String, price: String, btnTextColor: UIColor?, btnFont: UIFont) {
-        self.productId = productId
-        self.productImageView.image = image
+//    func configureCell(productId: String, image: UIImage?, title: String, description: String, price: String, btnTextColor: UIColor?, btnFont: UIFont) {
+//        self.productId = productId
+//        self.productImageView.image = image
+//        self.titleLable.text = title
+//        self.descriptionLable.text = description
+//        self.priceButton.configureButton(textColor: btnTextColor, font: btnFont)
+//    }
+    
+    func configureCell(title: String, description: String, btnTextColor: UIColor?, btnFont: UIFont) {
+
         self.titleLable.text = title
         self.descriptionLable.text = description
-        self.priceButton.configureButton(title: price, textColor: btnTextColor, font: btnFont)
+        self.priceButton.configureButton(textColor: btnTextColor, font: btnFont)
     }
+    
 }
 
 extension CatalogProductCell {
