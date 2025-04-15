@@ -8,12 +8,18 @@
 import Foundation
 import UIKit
 
-class InfoButton: UIButton {
+class SecondaryButton: UIButton {
     
     private lazy var image: UIImageView = {
         let image = UIImageView()
-        image.image = Resources.Images.infoButtonImage
+
         return image
+    }()
+    
+    private lazy var label: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        return label
     }()
     
     override init(frame: CGRect) {
@@ -32,7 +38,17 @@ class InfoButton: UIButton {
         image.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
-    
+        
+        addSubview(label)
+        label.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
     
+    func configureButton(image: UIImage? = nil, title: String? = nil, textColor: UIColor? = nil, font: UIFont? = nil) {
+        self.image.image = image
+        label.text = title
+        label.textColor = textColor
+        label.font = font
+    }
 }

@@ -48,7 +48,7 @@ class SizeEntityView: UIView {
         
         containerView.backgroundColor = isSelected ? Resources.FigmaColors.sizeEntitySelectColor : Resources.FigmaColors.sizeEntityColor
         
-        label.textColor = isSelected ? Resources.FigmaColors.whiteColor : Resources.FigmaColors.titleLabelColor
+        label.textColor = isSelected ? Resources.FigmaColors.whiteColor : Resources.FigmaColors.blackLabelColor
     }
     
     // MARK: - Actions
