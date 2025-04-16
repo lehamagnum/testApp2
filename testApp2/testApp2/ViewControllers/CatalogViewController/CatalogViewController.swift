@@ -8,29 +8,13 @@
 import Foundation
 import UIKit
 import SnapKit
+import SDWebImage
 
 class CatalogViewController: UIViewController {
     
     private let typeOfClothes = ["Каталог", "Новинки","Джинсы", "Футболки"]
     
-    private let clothes = [
-        ProductModel(image: Resources.Images.blazer,
-                       title: "Блейзер прямого кроя",
-                       description: "Двубортный блейзер на основе лиоцелла и вискозы.",
-                       price: "2 970 р"),
-        ProductModel(image: Resources.Images.pants,
-                       title: "Брюки из лиоцелла",
-                       description: "Брюки прямого кроя из ткани.",
-                       price: "5000 р"),
-        ProductModel(image: Resources.Images.tshort,
-                       title: "Кардиган из хлопка",
-                       description: "Короткие рукава. Застежка на пуговицы.",
-                       price: "14 999 р"),
-        ProductModel(image: Resources.Images.jeans,
-                       title: "Джинсы straight fit",
-                       description: "Пять карманов. Джинсы моднячие.",
-                       price: "50 000 р"),
-    ]
+    var productData: [ProductModel] = []
     
     // MARK: - UIElements
     private lazy var containerView: UIView = {
@@ -65,10 +49,11 @@ class CatalogViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-        registerCell()
         setupTableView()
         registerCells()
         bindCatalogViewController(type: typeOfClothes, isSelected: typeOfClothes[0])
+        getData()
+
     }
     
     // MARK: - Methods
@@ -83,6 +68,25 @@ class CatalogViewController: UIViewController {
             clothesContentStack.addArrangedSubview(view)
         }
     }
+    
+    func getData() {
+        
+        NetworkRequest.shared.getData { [weak self] result in
+            guard let self else { return }
+            
+            switch result {
+            case .success(let JSONdata):
+                self.productData = JSONdata
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension CatalogViewController: ClothesTypeEntityViewDelegate {
@@ -92,10 +96,6 @@ extension CatalogViewController: ClothesTypeEntityViewDelegate {
 }
 
 extension CatalogViewController {
-    
-    private func registerCell() {
-        tableView.register(CatalogProductCell.self, forCellReuseIdentifier: CatalogProductCell.cellId)
-    }
     
     private func setupTableView() {
         tableView.delegate = self
@@ -114,7 +114,7 @@ extension CatalogViewController {
         tableView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
             make.top.equalTo(view.safeAreaLayoutGuide).inset(58)
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(64)
         }
         
         view.addSubview(containerView)
@@ -140,29 +140,33 @@ extension CatalogViewController {
 
 extension CatalogViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        clothes.count
+        productData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CatalogProductCell.cellId, for: indexPath) as? CatalogProductCell else {return UITableViewCell()}
         cell.selectionStyle = .none
         cell.delegate = self
-        let data = clothes[indexPath.row]
         
-        cell.configureCell(productId: UUID().uuidString,
-                           image: data.image,
+        let data = self.productData[indexPath.row]
+        
+        cell.configureCell(id: data.id,
                            title: data.title,
                            description: data.description,
-                           price: data.price,
+                           price: String(data.price),
                            btnTextColor: Resources.FigmaColors.secondaryButtonTitleBrown,
                            btnFont: UIFont.systemFont(ofSize: 15, weight: .semibold))
+        
+        let url = URL(string: data.image)
+        cell.configureCellImages(url: url)
+        
         return cell
     }
 }
 
 extension CatalogViewController: CatalogProductCellDelegate {
     
-    func didTapButton(productId: String) {
+    func didTapButton(productId: Int) {
         let viewController = ProductViewController(productId: productId)
         viewController.productId = productId
         present(viewController, animated: true)

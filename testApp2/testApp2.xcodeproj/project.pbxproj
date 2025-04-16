@@ -28,6 +28,10 @@
 		B16D75D12D9E40D600B741E6 /* ClothesTypeEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */; };
 		B16D75D32DA0FA0800B741E6 /* CatalogProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D22DA0FA0800B741E6 /* CatalogProductCell.swift */; };
 		B16D75D52DA1468000B741E6 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D42DA1468000B741E6 /* ProductModel.swift */; };
+		B16D75F82DABE72400B741E6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75F72DABE72400B741E6 /* NetworkError.swift */; };
+		B16D75FA2DABE75700B741E6 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75F92DABE75700B741E6 /* NetworkRequest.swift */; };
+		B171502E2DAF55F500D304DC /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B171502D2DAF55F500D304DC /* SDWebImage */; };
+		B17150302DAF55F500D304DC /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B171502F2DAF55F500D304DC /* SDWebImageMapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +66,8 @@
 		B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesTypeEntityView.swift; sourceTree = "<group>"; };
 		B16D75D22DA0FA0800B741E6 /* CatalogProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogProductCell.swift; sourceTree = "<group>"; };
 		B16D75D42DA1468000B741E6 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		B16D75F72DABE72400B741E6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		B16D75F92DABE75700B741E6 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B171502E2DAF55F500D304DC /* SDWebImage in Frameworks */,
+				B17150302DAF55F500D304DC /* SDWebImageMapKit in Frameworks */,
 				7A2853552D89761200638A02 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +103,7 @@
 		B10C71712D89166C00DD41B6 /* testApp2 */ = {
 			isa = PBXGroup;
 			children = (
+				B16D75F62DABE71700B741E6 /* Network */,
 				B10C718E2D8BBFD300DD41B6 /* Resources */,
 				B10C71E32D9D462500DD41B6 /* TabBar */,
 				B10C71782D89166F00DD41B6 /* ViewControllers */,
@@ -108,8 +117,8 @@
 		B10C71782D89166F00DD41B6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B10C71E02D9D457700DD41B6 /* BasketViewController */,
 				B10C71922D8C218E00DD41B6 /* CatalogViewController */,
+				B10C71E02D9D457700DD41B6 /* BasketViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -201,6 +210,15 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		B16D75F62DABE71700B741E6 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B16D75F72DABE72400B741E6 /* NetworkError.swift */,
+				B16D75F92DABE75700B741E6 /* NetworkRequest.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -219,6 +237,8 @@
 			name = testApp2;
 			packageProductDependencies = (
 				7A2853542D89761200638A02 /* SnapKit */,
+				B171502D2DAF55F500D304DC /* SDWebImage */,
+				B171502F2DAF55F500D304DC /* SDWebImageMapKit */,
 			);
 			productName = testApp2;
 			productReference = B10C71522D89164200DD41B6 /* testApp2.app */;
@@ -250,6 +270,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				7A2853532D89761200638A02 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B171502C2DAF55F500D304DC /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B10C71532D89164200DD41B6 /* Products */;
@@ -282,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B10C71E22D9D45DF00DD41B6 /* BasketViewController.swift in Sources */,
+				B16D75F82DABE72400B741E6 /* NetworkError.swift in Sources */,
 				B10C71C12D8E96D100DD41B6 /* SecondaryButton.swift in Sources */,
 				B10C71E52D9D465A00DD41B6 /* TabBarController.swift in Sources */,
 				B10C71952D8C21C500DD41B6 /* PrimaryButton.swift in Sources */,
@@ -296,6 +318,7 @@
 				B10C718D2D8BBC7300DD41B6 /* Resources.swift in Sources */,
 				B10C71C52D910B7900DD41B6 /* View+extension.swift in Sources */,
 				B10C717B2D8918F800DD41B6 /* CatalogViewController.swift in Sources */,
+				B16D75FA2DABE75700B741E6 /* NetworkRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +547,14 @@
 				version = 5.7.1;
 			};
 		};
+		B171502C2DAF55F500D304DC /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -531,6 +562,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7A2853532D89761200638A02 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		B171502D2DAF55F500D304DC /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B171502C2DAF55F500D304DC /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		B171502F2DAF55F500D304DC /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B171502C2DAF55F500D304DC /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

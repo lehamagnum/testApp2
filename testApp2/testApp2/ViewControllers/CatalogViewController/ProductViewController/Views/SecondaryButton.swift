@@ -47,7 +47,7 @@ class SecondaryButton: UIButton {
     
     func configureButton(image: UIImage? = nil, title: String? = nil, textColor: UIColor? = nil, font: UIFont? = nil) {
         self.image.image = image
-        label.text = title
+        label.text = "\(title ?? "") ₽"
         label.textColor = textColor
         label.font = font
     }
