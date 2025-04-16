@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 protocol CatalogProductCellDelegate: AnyObject {
     
@@ -81,10 +82,15 @@ class CatalogProductCell: UITableViewCell {
     //MARK: - Methods
     
     func configureCell(id: Int, title: String, description: String, price: String, btnTextColor: UIColor?, btnFont: UIFont) {
+
         self.productId = id
         self.titleLable.text = title
         self.descriptionLable.text = description
         self.priceButton.configureButton(title: price, textColor: btnTextColor, font: btnFont)
+    }
+    
+    func configureCellImages(url: URL?) {
+        self.productImageView.sd_setImage(with: url)
     }
 }
 
@@ -101,6 +107,7 @@ extension CatalogProductCell {
         containerView.addSubview(productImageView)
         productImageView.snp.makeConstraints { make in
             make.width.equalTo(UIScreen.main.bounds.width * 0.39)
+            make.height.equalTo(productImageView.snp.width).multipliedBy(3/2)
             make.leading.top.equalToSuperview()
             make.bottom.lessThanOrEqualToSuperview()
             

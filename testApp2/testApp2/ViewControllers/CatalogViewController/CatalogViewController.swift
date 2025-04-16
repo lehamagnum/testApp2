@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import SDWebImage
 
 class CatalogViewController: UIViewController {
     
@@ -113,7 +114,7 @@ extension CatalogViewController {
         tableView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
             make.top.equalTo(view.safeAreaLayoutGuide).inset(58)
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(64)
         }
         
         view.addSubview(containerView)
@@ -155,6 +156,9 @@ extension CatalogViewController: UITableViewDelegate, UITableViewDataSource {
                            price: String(data.price),
                            btnTextColor: Resources.FigmaColors.secondaryButtonTitleBrown,
                            btnFont: UIFont.systemFont(ofSize: 15, weight: .semibold))
+        
+        let url = URL(string: data.image)
+        cell.configureCellImages(url: url)
         
         return cell
     }
