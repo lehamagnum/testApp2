@@ -11,25 +11,40 @@ class NetworkRequest {
     static let shared = NetworkRequest()
     
     private init() {}
+
+    private func createURL() -> URL? {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "fakestoreapi.com"
+        components.path = "/products"
+        components.queryItems = []
+        let url = components.url
+        return url
+    }
     
-    func getData(completion: @escaping (Result<[TestModel], Error>) -> Void) {
+    func getData(completion: @escaping (Result<[ProductModel], NetworkError>) -> Void) {
         
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else {return}
+        guard let url = createURL() else { return debugPrint("Invalid URL") }
         
-        URLSession.shared.dataTask(with: url) { data, responce, error in
+        URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data else {
                 if let error {
-                    completion(.failure(error))
+                    completion(.failure(NetworkError.invalidData))
+                    debugPrint("Ошибка запроса: \(error.localizedDescription)")
                 }
                 return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Код ответа: \(httpResponse.statusCode)")
             }
             
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             do {
-                let data = try decoder.decode([TestModel].self, from: data)
-                completion(.success(data))
+                let JSONdata = try decoder.decode([ProductModel].self, from: data)
+                completion(.success(JSONdata))
             } catch {
                 completion(.failure(NetworkError.invalidData))
             }

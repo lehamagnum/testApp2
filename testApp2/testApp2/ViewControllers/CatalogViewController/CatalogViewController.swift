@@ -13,7 +13,7 @@ class CatalogViewController: UIViewController {
     
     private let typeOfClothes = ["Каталог", "Новинки","Джинсы", "Футболки"]
     
-    var data: [TestModel] = []
+    var productData: [ProductModel] = []
     
     // MARK: - UIElements
     private lazy var containerView: UIView = {
@@ -48,22 +48,11 @@ class CatalogViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-        registerCell()
         setupTableView()
         registerCells()
         bindCatalogViewController(type: typeOfClothes, isSelected: typeOfClothes[0])
-        
-        NetworkRequest.shared.getData { result in
-            switch result {
-            case .success(let JSONdata):
+        getData()
 
-                self.data = JSONdata
-                print("\(JSONdata)")
-                
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
     }
     
     // MARK: - Methods
@@ -78,6 +67,25 @@ class CatalogViewController: UIViewController {
             clothesContentStack.addArrangedSubview(view)
         }
     }
+    
+    func getData() {
+        
+        NetworkRequest.shared.getData { [weak self] result in
+            guard let self else { return }
+            
+            switch result {
+            case .success(let JSONdata):
+                self.productData = JSONdata
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension CatalogViewController: ClothesTypeEntityViewDelegate {
@@ -87,10 +95,6 @@ extension CatalogViewController: ClothesTypeEntityViewDelegate {
 }
 
 extension CatalogViewController {
-    
-    private func registerCell() {
-        tableView.register(CatalogProductCell.self, forCellReuseIdentifier: CatalogProductCell.cellId)
-    }
     
     private func setupTableView() {
         tableView.delegate = self
@@ -135,7 +139,7 @@ extension CatalogViewController {
 
 extension CatalogViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.count
+        productData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -143,10 +147,12 @@ extension CatalogViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         cell.delegate = self
         
-        let data = self.data[indexPath.row]
+        let data = self.productData[indexPath.row]
         
-        cell.configureCell(title: data.title,
-                           description: data.body,
+        cell.configureCell(id: data.id,
+                           title: data.title,
+                           description: data.description,
+                           price: String(data.price),
                            btnTextColor: Resources.FigmaColors.secondaryButtonTitleBrown,
                            btnFont: UIFont.systemFont(ofSize: 15, weight: .semibold))
         
@@ -156,7 +162,7 @@ extension CatalogViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CatalogViewController: CatalogProductCellDelegate {
     
-    func didTapButton(productId: String) {
+    func didTapButton(productId: Int) {
         let viewController = ProductViewController(productId: productId)
         viewController.productId = productId
         present(viewController, animated: true)

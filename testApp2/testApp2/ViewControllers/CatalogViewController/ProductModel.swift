@@ -8,20 +8,26 @@
 import Foundation
 import UIKit
 
-struct ProductModel {
-    
-    var image: UIImage?
-    var title: String
-    var description: String
-    var price: String
+struct ProductModel: Codable {
+    let id: Int
+    let title: String
+    let price: Double
+    let description: String
+    let category: Category
+    let image: String
+    let rating: Rating
 }
 
-struct TestModel: Decodable {
-    
-    var userId: Int
-    var id: Int
-    var title: String
-    var body: String
+enum Category: String, Codable {
+    case electronics = "electronics"
+    case jewelery = "jewelery"
+    case menSClothing = "men's clothing"
+    case womenSClothing = "women's clothing"
+}
 
+// MARK: - Rating
+struct Rating: Codable {
+    let rate: Double
+    let count: Int
 }
 

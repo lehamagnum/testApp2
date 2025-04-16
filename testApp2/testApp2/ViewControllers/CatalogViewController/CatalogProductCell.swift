@@ -10,14 +10,14 @@ import UIKit
 
 protocol CatalogProductCellDelegate: AnyObject {
     
-    func didTapButton(productId: String)
+    func didTapButton(productId: Int)
 }
 
 class CatalogProductCell: UITableViewCell {
     //MARK: - Variables
     static let cellId = "TableViewCell"
     
-    private var productId: String?
+    private var productId: Int?
     
     weak var delegate: CatalogProductCellDelegate?
     
@@ -42,7 +42,7 @@ class CatalogProductCell: UITableViewCell {
         let lable = UILabel()
         lable.textColor = Resources.FigmaColors.blackLabelColor
         lable.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        lable.numberOfLines = 2
+        lable.numberOfLines = 0
         lable.setContentHuggingPriority(.defaultLow, for: .vertical)
         return lable
     }()
@@ -80,21 +80,12 @@ class CatalogProductCell: UITableViewCell {
     
     //MARK: - Methods
     
-//    func configureCell(productId: String, image: UIImage?, title: String, description: String, price: String, btnTextColor: UIColor?, btnFont: UIFont) {
-//        self.productId = productId
-//        self.productImageView.image = image
-//        self.titleLable.text = title
-//        self.descriptionLable.text = description
-//        self.priceButton.configureButton(textColor: btnTextColor, font: btnFont)
-//    }
-    
-    func configureCell(title: String, description: String, btnTextColor: UIColor?, btnFont: UIFont) {
-
+    func configureCell(id: Int, title: String, description: String, price: String, btnTextColor: UIColor?, btnFont: UIFont) {
+        self.productId = id
         self.titleLable.text = title
         self.descriptionLable.text = description
-        self.priceButton.configureButton(textColor: btnTextColor, font: btnFont)
+        self.priceButton.configureButton(title: price, textColor: btnTextColor, font: btnFont)
     }
-    
 }
 
 extension CatalogProductCell {

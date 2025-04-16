@@ -113,8 +113,8 @@
 		B10C71782D89166F00DD41B6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B10C71E02D9D457700DD41B6 /* BasketViewController */,
 				B10C71922D8C218E00DD41B6 /* CatalogViewController */,
+				B10C71E02D9D457700DD41B6 /* BasketViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

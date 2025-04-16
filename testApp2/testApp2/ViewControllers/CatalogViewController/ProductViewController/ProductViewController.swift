@@ -15,7 +15,7 @@ class ProductViewController: UIViewController {
     
     private var selectedSize: String?
     
-    var productId: String
+    var productId: Int
     
     // MARK: - UIElements
     
@@ -67,9 +67,9 @@ class ProductViewController: UIViewController {
         return label
     }()
     
-    private lazy var infoButton: SecondaryButton = {
-        let but = SecondaryButton()
-        but.configureButton(image: Resources.Images.infoButtonImage)
+    private lazy var infoButton: UIButton = {
+        let but = UIButton()
+        but.setImage(Resources.Images.infoButtonImage, for: .normal)
         let action = UIAction { action in
         debugPrint("кнопка информации нажата")}
         but.addAction(action, for: .primaryActionTriggered)
@@ -121,7 +121,7 @@ class ProductViewController: UIViewController {
         return stack
     }()
     
-    init(productId: String) {
+    init(productId: Int) {
         self.productId = productId
         super.init(nibName: nil, bundle: nil)
     }
@@ -159,7 +159,7 @@ extension ProductViewController: SizeEntityViewDelegate {
     
     func didSelectSize(with size: String) {
         bind(sizes: sizes, selectedSize: size)
-        debugPrint("selected size: \(size), \(productId)")
+        debugPrint("selected size: \(size)")
     }
 }
 
