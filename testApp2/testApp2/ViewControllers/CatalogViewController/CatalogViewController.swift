@@ -52,7 +52,7 @@ class CatalogViewController: UIViewController {
         setupTableView()
         registerCells()
         bindCatalogViewController(type: typeOfClothes, isSelected: typeOfClothes[0])
-        getData()
+        getProductData()
 
     }
     
@@ -69,25 +69,30 @@ class CatalogViewController: UIViewController {
         }
     }
     
-    func getData() {
+    func getProductData() {
         
-        NetworkRequest.shared.getData { [weak self] result in
+        let client = NetworkClient()
+        let request = GetProductRequest()
+        
+        client.send(request) { [weak self] result in
             guard let self else { return }
             
             switch result {
-            case .success(let JSONdata):
-                self.productData = JSONdata
+            case .success(let JSONProductData):
+                self.productData = JSONProductData
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
                 
             case .failure(let error):
-                print(error.localizedDescription)
+                debugPrint("\(error.localizedDescription)")
             }
         }
     }
+    
 }
+
 
 extension CatalogViewController: ClothesTypeEntityViewDelegate {
     func typeDidSelected(with type: String) {

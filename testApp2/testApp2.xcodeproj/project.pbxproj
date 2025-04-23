@@ -29,9 +29,11 @@
 		B16D75D32DA0FA0800B741E6 /* CatalogProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D22DA0FA0800B741E6 /* CatalogProductCell.swift */; };
 		B16D75D52DA1468000B741E6 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D42DA1468000B741E6 /* ProductModel.swift */; };
 		B16D75F82DABE72400B741E6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75F72DABE72400B741E6 /* NetworkError.swift */; };
-		B16D75FA2DABE75700B741E6 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75F92DABE75700B741E6 /* NetworkRequest.swift */; };
+		B16D75FA2DABE75700B741E6 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75F92DABE75700B741E6 /* NetworkClient.swift */; };
 		B171502E2DAF55F500D304DC /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B171502D2DAF55F500D304DC /* SDWebImage */; };
 		B17150302DAF55F500D304DC /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B171502F2DAF55F500D304DC /* SDWebImageMapKit */; };
+		B17150322DB8A25F00D304DC /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17150312DB8A25F00D304DC /* RequestProtocol.swift */; };
+		B17150342DB8A2C000D304DC /* GetProductRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17150332DB8A2C000D304DC /* GetProductRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +69,9 @@
 		B16D75D22DA0FA0800B741E6 /* CatalogProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogProductCell.swift; sourceTree = "<group>"; };
 		B16D75D42DA1468000B741E6 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		B16D75F72DABE72400B741E6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		B16D75F92DABE75700B741E6 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		B16D75F92DABE75700B741E6 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		B17150312DB8A25F00D304DC /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		B17150332DB8A2C000D304DC /* GetProductRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,7 +218,9 @@
 			isa = PBXGroup;
 			children = (
 				B16D75F72DABE72400B741E6 /* NetworkError.swift */,
-				B16D75F92DABE75700B741E6 /* NetworkRequest.swift */,
+				B16D75F92DABE75700B741E6 /* NetworkClient.swift */,
+				B17150312DB8A25F00D304DC /* RequestProtocol.swift */,
+				B17150332DB8A2C000D304DC /* GetProductRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -305,12 +311,14 @@
 				B10C71E22D9D45DF00DD41B6 /* BasketViewController.swift in Sources */,
 				B16D75F82DABE72400B741E6 /* NetworkError.swift in Sources */,
 				B10C71C12D8E96D100DD41B6 /* SecondaryButton.swift in Sources */,
+				B17150342DB8A2C000D304DC /* GetProductRequest.swift in Sources */,
 				B10C71E52D9D465A00DD41B6 /* TabBarController.swift in Sources */,
 				B10C71952D8C21C500DD41B6 /* PrimaryButton.swift in Sources */,
 				B10C71C32D8FDF5B00DD41B6 /* SizeEntityView.swift in Sources */,
 				B16D75D32DA0FA0800B741E6 /* CatalogProductCell.swift in Sources */,
 				B16D75D52DA1468000B741E6 /* ProductModel.swift in Sources */,
 				B10C71E72D9D467E00DD41B6 /* TabBarButton.swift in Sources */,
+				B17150322DB8A25F00D304DC /* RequestProtocol.swift in Sources */,
 				B10C71752D89166C00DD41B6 /* AppDelegate.swift in Sources */,
 				B10C71762D89166C00DD41B6 /* SceneDelegate.swift in Sources */,
 				B10C71772D89166C00DD41B6 /* ProductViewController.swift in Sources */,
@@ -318,7 +326,7 @@
 				B10C718D2D8BBC7300DD41B6 /* Resources.swift in Sources */,
 				B10C71C52D910B7900DD41B6 /* View+extension.swift in Sources */,
 				B10C717B2D8918F800DD41B6 /* CatalogViewController.swift in Sources */,
-				B16D75FA2DABE75700B741E6 /* NetworkRequest.swift in Sources */,
+				B16D75FA2DABE75700B741E6 /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

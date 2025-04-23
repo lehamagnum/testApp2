@@ -10,5 +10,8 @@ import Foundation
 enum NetworkError: Error {
     case invalidUrl
     case invalidData
-    
+    case invalidRequest
+    case decodingError
+
 }
+
