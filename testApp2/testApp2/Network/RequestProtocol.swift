@@ -8,13 +8,19 @@
 import Foundation
 
 protocol RequestProtocol {
+    
     associatedtype Response: Decodable
     
-    var baseUrlString: String { get }
+    var scheme: String { get }
+    var host: String { get }
     var path: String { get }
     var queryItems: [URLQueryItem]? { get }
-    var method: String { get }
     var headers: [String: String]? { get }
     
+    var method: String { get }
+    
+    func createURL() -> URL
+    
     var urlRequest: URLRequest { get }
+
 }

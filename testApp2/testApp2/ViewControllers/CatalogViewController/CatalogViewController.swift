@@ -53,7 +53,7 @@ class CatalogViewController: UIViewController {
         registerCells()
         bindCatalogViewController(type: typeOfClothes, isSelected: typeOfClothes[0])
         getProductData()
-
+    
     }
     
     // MARK: - Methods
@@ -69,30 +69,29 @@ class CatalogViewController: UIViewController {
         }
     }
     
-    func getProductData() {
+     func getProductData() {
         
-        let client = NetworkClient()
-        let request = GetProductRequest()
-        
-        client.send(request) { [weak self] result in
+        Task { [weak self] in
             guard let self else { return }
             
-            switch result {
-            case .success(let JSONProductData):
-                self.productData = JSONProductData
+            let client = NetworkClient()
+            let request = GetProductRequest()
+            
+            do {
+                let JSONdata = try await client.send(request)
+                self.productData = JSONdata
                 
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                self.tableView.reloadData()
                 
-            case .failure(let error):
-                debugPrint("\(error.localizedDescription)")
+            } catch {
+                debugPrint("Network request failed: \(error.localizedDescription)")
+                let alert = UIAlertController(title: "Ошибка", message: "Проверьте интернет соединение.", preferredStyle: .actionSheet)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                present(alert, animated: true)
             }
         }
     }
-    
 }
-
 
 extension CatalogViewController: ClothesTypeEntityViewDelegate {
     func typeDidSelected(with type: String) {

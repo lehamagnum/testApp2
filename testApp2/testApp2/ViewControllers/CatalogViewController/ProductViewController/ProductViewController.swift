@@ -68,12 +68,12 @@ class ProductViewController: UIViewController {
     }()
     
     private lazy var infoButton: UIButton = {
-        let but = UIButton()
-        but.setImage(Resources.Images.infoButtonImage, for: .normal)
+        let btn = UIButton()
+        btn.setImage(Resources.Images.infoButtonImage, for: .normal)
         let action = UIAction { action in
         debugPrint("кнопка информации нажата")}
-        but.addAction(action, for: .primaryActionTriggered)
-        return but
+        btn.addAction(action, for: .primaryActionTriggered)
+        return btn
     }()
     
     private lazy var descriptionLable: UILabel = {
