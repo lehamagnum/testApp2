@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class NetworkClient {
-    
-    func send<R: RequestProtocol>(_ request: R) async throws -> R.Response {
+    // async/await
+    func sendAsync<R: RequestProtocol>(_ request: R) async throws -> R.Response {
         
         let responce = try await URLSession.shared.data(for: request.urlRequest)
         let decoder = JSONDecoder()
@@ -19,8 +21,8 @@ class NetworkClient {
         
         return result
     }
-    
-    func sendWithCompletion<R: RequestProtocol>(_ request: R, completion: @escaping (Result<R.Response, NetworkError>)-> Void) {
+    // completion
+    func sendCompletion<R: RequestProtocol>(_ request: R, completion: @escaping (Result<R.Response, NetworkError>)-> Void) {
         
         URLSession.shared.dataTask(with: request.urlRequest) {data, responce, error in
             guard let data else {
@@ -48,5 +50,32 @@ class NetworkClient {
         }.resume()
         
     }
+    // RX
+    func sendRx<R: RequestProtocol>(_ request: R) -> Observable<R.Response> {
+        
+            return Observable.create { observer in
+                
+                let task = URLSession.shared.rx
+                    .data(request: request.urlRequest)
+                    .subscribe(onNext: { data in
+                        
+                        do {
+                            let decoder = JSONDecoder()
+                            decoder.keyDecodingStrategy = .convertFromSnakeCase
+                            let result = try decoder.decode(R.Response.self, from: data)
+                            observer.onNext(result)
+                            observer.onCompleted()
+                        } catch {
+                            observer.onError(NetworkError.decodingError)
+                        }
+                    }, onError: { error in
+                        observer.onError(error)
+                    })
+
+                return Disposables.create {
+                    task.disposed(by: DisposeBag())
+                }
+            }
+        }
 }
 

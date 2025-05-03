@@ -9,12 +9,16 @@ import Foundation
 import UIKit
 import SnapKit
 import SDWebImage
+import RxSwift
+import RxCocoa
 
 class CatalogViewController: UIViewController {
     
     private let typeOfClothes = ["Каталог", "Новинки","Джинсы", "Футболки"]
     
     var productData: [ProductModel] = []
+    
+    let disposeBag = DisposeBag()
     
     // MARK: - UIElements
     private lazy var containerView: UIView = {
@@ -70,26 +74,43 @@ class CatalogViewController: UIViewController {
     }
     
      func getProductData() {
+         
+         let client = NetworkClient()
+         let request = GetProductRequest()
+         
+         client.sendRx(request)
+             .observe(on: MainScheduler.instance)
+             .subscribe(
+                onNext: { [weak self] products in
+                    guard let self else { return }
+                    self.productData = products
+                    self.tableView.reloadData()
+                 },
+                 onError: { error in
+                     print("Ошибка: \(error)")
+                 }
+             )
+             .disposed(by: disposeBag)
         
-        Task { [weak self] in
-            guard let self else { return }
-            
-            let client = NetworkClient()
-            let request = GetProductRequest()
-            
-            do {
-                let JSONdata = try await client.send(request)
-                self.productData = JSONdata
-                
-                self.tableView.reloadData()
-                
-            } catch {
-                debugPrint("Network request failed: \(error.localizedDescription)")
-                let alert = UIAlertController(title: "Ошибка", message: "Проверьте интернет соединение.", preferredStyle: .actionSheet)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                present(alert, animated: true)
-            }
-        }
+//        Task { [weak self] in
+//            guard let self else { return }
+//            
+//            let client = NetworkClient()
+//            let request = GetProductRequest()
+//            
+//            do {
+//                let JSONdata = try await client.send(request)
+//                self.productData = JSONdata
+//                
+//                self.tableView.reloadData()
+//                
+//            } catch {
+//                debugPrint("Network request failed: \(error.localizedDescription)")
+//                let alert = UIAlertController(title: "Ошибка", message: "Проверьте интернет соединение.", preferredStyle: .actionSheet)
+//                alert.addAction(UIAlertAction(title: "OK", style: .default))
+//                present(alert, animated: true)
+//            }
+//        }
     }
 }
 

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A2853552D89761200638A02 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7A2853542D89761200638A02 /* SnapKit */; };
 		B10C71722D89166C00DD41B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10C716B2D89166C00DD41B6 /* Assets.xcassets */; };
 		B10C71742D89166C00DD41B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10C716E2D89166C00DD41B6 /* LaunchScreen.storyboard */; };
 		B10C71752D89166C00DD41B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C716A2D89166C00DD41B6 /* AppDelegate.swift */; };
@@ -29,11 +28,14 @@
 		B16D75D32DA0FA0800B741E6 /* CatalogProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D22DA0FA0800B741E6 /* CatalogProductCell.swift */; };
 		B16D75D52DA1468000B741E6 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D42DA1468000B741E6 /* ProductModel.swift */; };
 		B16D75F82DABE72400B741E6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75F72DABE72400B741E6 /* NetworkError.swift */; };
-		B171502E2DAF55F500D304DC /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B171502D2DAF55F500D304DC /* SDWebImage */; };
-		B17150302DAF55F500D304DC /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B171502F2DAF55F500D304DC /* SDWebImageMapKit */; };
 		B17150322DB8A25F00D304DC /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17150312DB8A25F00D304DC /* RequestProtocol.swift */; };
 		B17150342DB8A2C000D304DC /* GetProductRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17150332DB8A2C000D304DC /* GetProductRequest.swift */; };
 		B17150362DBB390700D304DC /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17150352DBB390700D304DC /* NetworkClient.swift */; };
+		B192E8F02DC4EAED0030DE58 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B192E8EF2DC4EAED0030DE58 /* SDWebImage */; };
+		B192E8F22DC4EAED0030DE58 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B192E8F12DC4EAED0030DE58 /* SDWebImageMapKit */; };
+		B19AF7D02DC4EC7400CC2A13 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B19AF7CF2DC4EC7400CC2A13 /* SnapKit */; };
+		B1CC40342DC6305E00C0FA51 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B1CC40332DC6305E00C0FA51 /* RxCocoa */; };
+		B1CC40362DC6305E00C0FA51 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B1CC40352DC6305E00C0FA51 /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,9 +81,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B171502E2DAF55F500D304DC /* SDWebImage in Frameworks */,
-				B17150302DAF55F500D304DC /* SDWebImageMapKit in Frameworks */,
-				7A2853552D89761200638A02 /* SnapKit in Frameworks */,
+				B19AF7D02DC4EC7400CC2A13 /* SnapKit in Frameworks */,
+				B192E8F22DC4EAED0030DE58 /* SDWebImageMapKit in Frameworks */,
+				B1CC40362DC6305E00C0FA51 /* RxSwift in Frameworks */,
+				B1CC40342DC6305E00C0FA51 /* RxCocoa in Frameworks */,
+				B192E8F02DC4EAED0030DE58 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,20 +221,12 @@
 		B16D75F62DABE71700B741E6 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				B17150372DBB39D900D304DC /* async\await */,
 				B16D75F72DABE72400B741E6 /* NetworkError.swift */,
 				B17150352DBB390700D304DC /* NetworkClient.swift */,
 				B17150312DB8A25F00D304DC /* RequestProtocol.swift */,
 				B17150332DB8A2C000D304DC /* GetProductRequest.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		B17150372DBB39D900D304DC /* async\await */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "async\\await";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,9 +246,11 @@
 			);
 			name = testApp2;
 			packageProductDependencies = (
-				7A2853542D89761200638A02 /* SnapKit */,
-				B171502D2DAF55F500D304DC /* SDWebImage */,
-				B171502F2DAF55F500D304DC /* SDWebImageMapKit */,
+				B192E8EF2DC4EAED0030DE58 /* SDWebImage */,
+				B192E8F12DC4EAED0030DE58 /* SDWebImageMapKit */,
+				B19AF7CF2DC4EC7400CC2A13 /* SnapKit */,
+				B1CC40332DC6305E00C0FA51 /* RxCocoa */,
+				B1CC40352DC6305E00C0FA51 /* RxSwift */,
 			);
 			productName = testApp2;
 			productReference = B10C71522D89164200DD41B6 /* testApp2.app */;
@@ -283,8 +281,9 @@
 			mainGroup = B10C71492D89164200DD41B6;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				7A2853532D89761200638A02 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				B171502C2DAF55F500D304DC /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				B192E8EE2DC4EAED0030DE58 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				B19AF7CE2DC4EC7400CC2A13 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B1CC40322DC6305E00C0FA51 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B10C71532D89164200DD41B6 /* Products */;
@@ -555,15 +554,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7A2853532D89761200638A02 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = exactVersion;
-				version = 5.7.1;
-			};
-		};
-		B171502C2DAF55F500D304DC /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+		B192E8EE2DC4EAED0030DE58 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
 			requirement = {
@@ -571,23 +562,49 @@
 				minimumVersion = 5.21.0;
 			};
 		};
+		B19AF7CE2DC4EC7400CC2A13 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		B1CC40322DC6305E00C0FA51 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7A2853542D89761200638A02 /* SnapKit */ = {
+		B192E8EF2DC4EAED0030DE58 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7A2853532D89761200638A02 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		B171502D2DAF55F500D304DC /* SDWebImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B171502C2DAF55F500D304DC /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			package = B192E8EE2DC4EAED0030DE58 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
 		};
-		B171502F2DAF55F500D304DC /* SDWebImageMapKit */ = {
+		B192E8F12DC4EAED0030DE58 /* SDWebImageMapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B171502C2DAF55F500D304DC /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			package = B192E8EE2DC4EAED0030DE58 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
+		};
+		B19AF7CF2DC4EC7400CC2A13 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B19AF7CE2DC4EC7400CC2A13 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		B1CC40332DC6305E00C0FA51 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B1CC40322DC6305E00C0FA51 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		B1CC40352DC6305E00C0FA51 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B1CC40322DC6305E00C0FA51 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
