@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Sentry
 
 class RequestAdapters: RequestAdapterProtocol {
     
@@ -30,18 +31,26 @@ class RequestAdapters: RequestAdapterProtocol {
 //    }
     
     func logResponse(_ response: URLResponse?, data: Data?, error: Error?) {
-        print("⬅️ [RESPONSE]")
-        if let httpResponse = response as? HTTPURLResponse {
-            print("Status code: \(httpResponse.statusCode)")
-            print("URL: \(httpResponse.url?.absoluteString ?? "nil")")
-            print("Headers: \(httpResponse.allHeaderFields)")
+            print("⬅️ [RESPONSE]")
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Status code: \(httpResponse.statusCode)")
+                print("URL: \(httpResponse.url?.absoluteString ?? "nil")")
+                print("Headers: \(httpResponse.allHeaderFields)")
+            }
+
+            if let data = data {
+                print("Body: \(data)")
+            }
+
+            if let error = error {
+                print("Error: \(error)")
+                // Логирование ошибки в Sentry
+                SentrySDK.capture(error: error)
+            }
         }
-        if let data = data {
-            print("Body: \(data)")
-        }
-        if let error = error {
-            print("Error: \(error)")
-        }
-    }
+    
+    
     
 }
+
+    
