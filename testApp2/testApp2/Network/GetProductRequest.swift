@@ -28,7 +28,7 @@ struct GetProductRequest: RequestProtocol {
         guard let url = components.url else { fatalError("Incorrect URL") }
         return url
     }
-    
+
     var urlRequest: URLRequest {
         var request = URLRequest(url: createURL())
         request.httpMethod = method

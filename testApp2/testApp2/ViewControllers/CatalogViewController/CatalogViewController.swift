@@ -76,6 +76,9 @@ class CatalogViewController: UIViewController {
      func getProductData() {
          
          let client = NetworkClient()
+         client.requestAdapter = RequestAdapters()
+         client.requestLogger = RequestAdapters()
+         
          let request = GetProductRequest()
          
          client.sendRx(request)
@@ -86,12 +89,18 @@ class CatalogViewController: UIViewController {
                     self.productData = products
                     self.tableView.reloadData()
                  },
-                 onError: { error in
-                     print("Ошибка: \(error)")
-                 }
+                onError: { error in
+                    print("Ошибка: \(error)")
+                    let alert = UIAlertController(title: "Ошибка",
+                                                  message: "Проверьте интернет соединение.",
+                                                  preferredStyle: .actionSheet)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
+                }
              )
              .disposed(by: disposeBag)
-        
+         
+        // async/await
 //        Task { [weak self] in
 //            guard let self else { return }
 //            
