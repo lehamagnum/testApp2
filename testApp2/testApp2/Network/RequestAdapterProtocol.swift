@@ -11,7 +11,7 @@ protocol RequestAdapterProtocol {
     
     func appVersionRequestAdapt(_ request: URLRequest) -> URLRequest
     
-//    func logRequest(_ request: URLRequest)
+    func logRequest(_ request: URLRequest)
     
     func logResponse(_ response: URLResponse?, data: Data?, error: Error?)
 }

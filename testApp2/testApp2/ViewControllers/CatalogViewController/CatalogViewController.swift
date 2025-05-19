@@ -16,7 +16,7 @@ class CatalogViewController: UIViewController {
     
     private let typeOfClothes = ["Каталог", "Новинки","Джинсы", "Футболки"]
     
-    var productData: [ProductModel] = []
+    var productData: [ProductResponceModel] = []
     
     let disposeBag = DisposeBag()
     
@@ -77,7 +77,6 @@ class CatalogViewController: UIViewController {
          
          let client = NetworkClient()
          client.requestAdapter = RequestAdapters()
-         client.requestLogger = RequestAdapters()
          
          let request = GetProductRequest()
          
@@ -89,13 +88,15 @@ class CatalogViewController: UIViewController {
                     self.productData = products
                     self.tableView.reloadData()
                  },
-                onError: { error in
+                onError: { [weak self] error in
+                    guard let self else { return }
                     print("Ошибка: \(error)")
                     let alert = UIAlertController(title: "Ошибка",
                                                   message: "Проверьте интернет соединение.",
                                                   preferredStyle: .actionSheet)
                     alert.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(alert, animated: true)
+                    
                 }
              )
              .disposed(by: disposeBag)

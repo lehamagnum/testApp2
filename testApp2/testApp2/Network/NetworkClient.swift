@@ -13,14 +13,12 @@ class NetworkClient {
     
     var requestAdapter: RequestAdapterProtocol?
     
-    var requestLogger: RequestAdapterProtocol?
-    
     // RX
     func sendRx<R: RequestProtocol>(_ request: R) -> Observable<R.Response> {
             
         let originalRequest = request.urlRequest
         let adaptedRequest = requestAdapter?.appVersionRequestAdapt(originalRequest) ?? originalRequest
-//        requestLogger?.logRequest(adaptedRequest)
+        requestAdapter?.logRequest(adaptedRequest)
         
         
             return Observable.create { observer in
@@ -29,8 +27,7 @@ class NetworkClient {
                     .response(request: adaptedRequest)
                     .subscribe(onNext: { responce, data in
                         
-                        
-                        self.requestLogger?.logResponse(responce, data: data, error: nil)
+                        self.requestAdapter?.logResponse(responce, data: data, error: nil)
                         
                         do {
                             let decoder = JSONDecoder()
@@ -42,7 +39,7 @@ class NetworkClient {
                             observer.onError(NetworkError.decodingError)
                         }
                     }, onError: { error in
-                        self.requestLogger?.logResponse(nil, data: nil, error: error)
+                        self.requestAdapter?.logResponse(nil, data: nil, error: error)
                         observer.onError(error)
                     })
 

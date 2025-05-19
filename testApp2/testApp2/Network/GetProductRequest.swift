@@ -9,7 +9,7 @@ import Foundation
 
 struct GetProductRequest: RequestProtocol {
     
-    typealias Response = [ProductModel]
+    typealias Response = [ProductResponceModel]
     
     var scheme = "https"
     var host = "fakestoreapi.com"

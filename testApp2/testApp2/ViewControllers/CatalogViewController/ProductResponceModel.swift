@@ -8,17 +8,17 @@
 import Foundation
 import UIKit
 
-struct ProductModel: Codable {
+struct ProductResponceModel: Decodable {
     let id: Int
     let title: String
     let price: Double
     let description: String
-    let category: Category
+    let category: CategoryResponceModel
     let image: String
-    let rating: Rating
+    let rating: RatingResponceModel
 }
 
-enum Category: String, Codable {
+enum CategoryResponceModel: String, Decodable {
     case electronics = "electronics"
     case jewelery = "jewelery"
     case menSClothing = "men's clothing"
@@ -26,7 +26,7 @@ enum Category: String, Codable {
 }
 
 // MARK: - Rating
-struct Rating: Codable {
+struct RatingResponceModel: Decodable {
     let rate: Double
     let count: Int
 }

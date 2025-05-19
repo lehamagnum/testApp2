@@ -16,9 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         SentrySDK.start { options in
-            options.dsn = "https://d3c30d07a584005900d32095e78f6c3c@o4509309831086080.ingest.de.sentry.io/4509309833642064"
-            options.debug = true
-            options.tracesSampleRate = 1.0 // Для мониторинга производительности
+            options.dsn = Keys.sentryDsnKey
+            options.debug = false
+//            options.tracesSampleRate = 1.0*/ // Для мониторинга производительности
+        }
+        
+        do {
+            throw NSError(domain: "Test", code: 123, userInfo: nil)
+        } catch {
+            SentrySDK.capture(error: error)
         }
         
         return true
