@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A2853552D89761200638A02 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7A2853542D89761200638A02 /* SnapKit */; };
+		8736864F85364ECD9024C572 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = F6A8BB197559484396AE9478 /* Sentry */; };
 		B10C71722D89166C00DD41B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10C716B2D89166C00DD41B6 /* Assets.xcassets */; };
 		B10C71742D89166C00DD41B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10C716E2D89166C00DD41B6 /* LaunchScreen.storyboard */; };
 		B10C71752D89166C00DD41B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C716A2D89166C00DD41B6 /* AppDelegate.swift */; };
@@ -25,9 +25,21 @@
 		B10C71E22D9D45DF00DD41B6 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71E12D9D45DF00DD41B6 /* BasketViewController.swift */; };
 		B10C71E52D9D465A00DD41B6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71E42D9D465A00DD41B6 /* TabBarController.swift */; };
 		B10C71E72D9D467E00DD41B6 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10C71E62D9D467E00DD41B6 /* TabBarButton.swift */; };
+		B12C15E22DD09AE5009EC9AF /* RequestAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C15E12DD09AE5009EC9AF /* RequestAdapters.swift */; };
+		B12C15E42DD0A574009EC9AF /* RequestAdapterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C15E32DD0A574009EC9AF /* RequestAdapterProtocol.swift */; };
 		B16D75D12D9E40D600B741E6 /* ClothesTypeEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */; };
 		B16D75D32DA0FA0800B741E6 /* CatalogProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D22DA0FA0800B741E6 /* CatalogProductCell.swift */; };
-		B16D75D52DA1468000B741E6 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D42DA1468000B741E6 /* ProductModel.swift */; };
+		B16D75D52DA1468000B741E6 /* ProductResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75D42DA1468000B741E6 /* ProductResponceModel.swift */; };
+		B16D75F82DABE72400B741E6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D75F72DABE72400B741E6 /* NetworkError.swift */; };
+		B17150322DB8A25F00D304DC /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17150312DB8A25F00D304DC /* RequestProtocol.swift */; };
+		B17150342DB8A2C000D304DC /* GetProductRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17150332DB8A2C000D304DC /* GetProductRequest.swift */; };
+		B17150362DBB390700D304DC /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17150352DBB390700D304DC /* NetworkClient.swift */; };
+		B189EF9B2DDB3AEE00A62828 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189EF9A2DDB3AEE00A62828 /* Keys.swift */; };
+		B192E8F02DC4EAED0030DE58 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B192E8EF2DC4EAED0030DE58 /* SDWebImage */; };
+		B192E8F22DC4EAED0030DE58 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B192E8F12DC4EAED0030DE58 /* SDWebImageMapKit */; };
+		B19AF7D02DC4EC7400CC2A13 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B19AF7CF2DC4EC7400CC2A13 /* SnapKit */; };
+		B1CC40342DC6305E00C0FA51 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B1CC40332DC6305E00C0FA51 /* RxCocoa */; };
+		B1CC40362DC6305E00C0FA51 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B1CC40352DC6305E00C0FA51 /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,9 +71,16 @@
 		B10C71E12D9D45DF00DD41B6 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 		B10C71E42D9D465A00DD41B6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B10C71E62D9D467E00DD41B6 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
+		B12C15E12DD09AE5009EC9AF /* RequestAdapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAdapters.swift; sourceTree = "<group>"; };
+		B12C15E32DD0A574009EC9AF /* RequestAdapterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAdapterProtocol.swift; sourceTree = "<group>"; };
 		B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesTypeEntityView.swift; sourceTree = "<group>"; };
 		B16D75D22DA0FA0800B741E6 /* CatalogProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogProductCell.swift; sourceTree = "<group>"; };
-		B16D75D42DA1468000B741E6 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		B16D75D42DA1468000B741E6 /* ProductResponceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponceModel.swift; sourceTree = "<group>"; };
+		B16D75F72DABE72400B741E6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		B17150312DB8A25F00D304DC /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		B17150332DB8A2C000D304DC /* GetProductRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductRequest.swift; sourceTree = "<group>"; };
+		B17150352DBB390700D304DC /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		B189EF9A2DDB3AEE00A62828 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +88,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A2853552D89761200638A02 /* SnapKit in Frameworks */,
+				B19AF7D02DC4EC7400CC2A13 /* SnapKit in Frameworks */,
+				B192E8F22DC4EAED0030DE58 /* SDWebImageMapKit in Frameworks */,
+				B1CC40362DC6305E00C0FA51 /* RxSwift in Frameworks */,
+				B1CC40342DC6305E00C0FA51 /* RxCocoa in Frameworks */,
+				B192E8F02DC4EAED0030DE58 /* SDWebImage in Frameworks */,
+				8736864F85364ECD9024C572 /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +119,7 @@
 		B10C71712D89166C00DD41B6 /* testApp2 */ = {
 			isa = PBXGroup;
 			children = (
+				B16D75F62DABE71700B741E6 /* Network */,
 				B10C718E2D8BBFD300DD41B6 /* Resources */,
 				B10C71E32D9D462500DD41B6 /* TabBar */,
 				B10C71782D89166F00DD41B6 /* ViewControllers */,
@@ -108,8 +133,8 @@
 		B10C71782D89166F00DD41B6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B10C71E02D9D457700DD41B6 /* BasketViewController */,
 				B10C71922D8C218E00DD41B6 /* CatalogViewController */,
+				B10C71E02D9D457700DD41B6 /* BasketViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -121,6 +146,7 @@
 				B10C716B2D89166C00DD41B6 /* Assets.xcassets */,
 				B10C716E2D89166C00DD41B6 /* LaunchScreen.storyboard */,
 				B10C716F2D89166C00DD41B6 /* SceneDelegate.swift */,
+				B189EF9A2DDB3AEE00A62828 /* Keys.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -149,7 +175,7 @@
 				B10C717A2D8918F800DD41B6 /* CatalogViewController.swift */,
 				B16D75D02D9E40D600B741E6 /* ClothesTypeEntityView.swift */,
 				B16D75D22DA0FA0800B741E6 /* CatalogProductCell.swift */,
-				B16D75D42DA1468000B741E6 /* ProductModel.swift */,
+				B16D75D42DA1468000B741E6 /* ProductResponceModel.swift */,
 				B10C71912D8C217200DD41B6 /* ProductViewController */,
 			);
 			path = CatalogViewController;
@@ -201,6 +227,19 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		B16D75F62DABE71700B741E6 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B16D75F72DABE72400B741E6 /* NetworkError.swift */,
+				B17150352DBB390700D304DC /* NetworkClient.swift */,
+				B17150312DB8A25F00D304DC /* RequestProtocol.swift */,
+				B17150332DB8A2C000D304DC /* GetProductRequest.swift */,
+				B12C15E32DD0A574009EC9AF /* RequestAdapterProtocol.swift */,
+				B12C15E12DD09AE5009EC9AF /* RequestAdapters.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -211,6 +250,7 @@
 				B10C714E2D89164200DD41B6 /* Sources */,
 				B10C714F2D89164200DD41B6 /* Frameworks */,
 				B10C71502D89164200DD41B6 /* Resources */,
+				60BF4634F39341159A6BF92B /* Upload Debug Symbols to Sentry */,
 			);
 			buildRules = (
 			);
@@ -218,7 +258,12 @@
 			);
 			name = testApp2;
 			packageProductDependencies = (
-				7A2853542D89761200638A02 /* SnapKit */,
+				B192E8EF2DC4EAED0030DE58 /* SDWebImage */,
+				B192E8F12DC4EAED0030DE58 /* SDWebImageMapKit */,
+				B19AF7CF2DC4EC7400CC2A13 /* SnapKit */,
+				B1CC40332DC6305E00C0FA51 /* RxCocoa */,
+				B1CC40352DC6305E00C0FA51 /* RxSwift */,
+				F6A8BB197559484396AE9478 /* Sentry */,
 			);
 			productName = testApp2;
 			productReference = B10C71522D89164200DD41B6 /* testApp2.app */;
@@ -249,7 +294,10 @@
 			mainGroup = B10C71492D89164200DD41B6;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				7A2853532D89761200638A02 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B192E8EE2DC4EAED0030DE58 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				B19AF7CE2DC4EC7400CC2A13 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B1CC40322DC6305E00C0FA51 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				B6FB7EDFEA7E432783905426 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B10C71532D89164200DD41B6 /* Products */;
@@ -276,26 +324,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		60BF4634F39341159A6BF92B /* Upload Debug Symbols to Sentry */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+			);
+			name = "Upload Debug Symbols to Sentry";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script is responsible for uploading debug symbols and source context for Sentry.\nif which sentry-cli >/dev/null; then\nexport SENTRY_ORG=amerika-eemailru\nexport SENTRY_PROJECT=test-app\nERROR=$(sentry-cli debug-files upload --include-sources \"$DWARF_DSYM_FOLDER_PATH\" 2>&1 >/dev/null)\nif [ ! $? -eq 0 ]; then\necho \"warning: sentry-cli - $ERROR\"\nfi\nelse\necho \"warning: sentry-cli not installed, download from https://github.com/getsentry/sentry-cli/releases\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B10C714E2D89164200DD41B6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B10C71E22D9D45DF00DD41B6 /* BasketViewController.swift in Sources */,
+				B16D75F82DABE72400B741E6 /* NetworkError.swift in Sources */,
+				B12C15E22DD09AE5009EC9AF /* RequestAdapters.swift in Sources */,
 				B10C71C12D8E96D100DD41B6 /* SecondaryButton.swift in Sources */,
+				B17150342DB8A2C000D304DC /* GetProductRequest.swift in Sources */,
 				B10C71E52D9D465A00DD41B6 /* TabBarController.swift in Sources */,
 				B10C71952D8C21C500DD41B6 /* PrimaryButton.swift in Sources */,
+				B17150362DBB390700D304DC /* NetworkClient.swift in Sources */,
 				B10C71C32D8FDF5B00DD41B6 /* SizeEntityView.swift in Sources */,
 				B16D75D32DA0FA0800B741E6 /* CatalogProductCell.swift in Sources */,
-				B16D75D52DA1468000B741E6 /* ProductModel.swift in Sources */,
+				B16D75D52DA1468000B741E6 /* ProductResponceModel.swift in Sources */,
 				B10C71E72D9D467E00DD41B6 /* TabBarButton.swift in Sources */,
+				B17150322DB8A25F00D304DC /* RequestProtocol.swift in Sources */,
 				B10C71752D89166C00DD41B6 /* AppDelegate.swift in Sources */,
 				B10C71762D89166C00DD41B6 /* SceneDelegate.swift in Sources */,
+				B189EF9B2DDB3AEE00A62828 /* Keys.swift in Sources */,
 				B10C71772D89166C00DD41B6 /* ProductViewController.swift in Sources */,
 				B16D75D12D9E40D600B741E6 /* ClothesTypeEntityView.swift in Sources */,
 				B10C718D2D8BBC7300DD41B6 /* Resources.swift in Sources */,
 				B10C71C52D910B7900DD41B6 /* View+extension.swift in Sources */,
 				B10C717B2D8918F800DD41B6 /* CatalogViewController.swift in Sources */,
+				B12C15E42DD0A574009EC9AF /* RequestAdapterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +394,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = testApp2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -350,6 +426,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = testApp2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -516,21 +594,70 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7A2853532D89761200638A02 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		B192E8EE2DC4EAED0030DE58 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
 			requirement = {
-				kind = exactVersion;
-				version = 5.7.1;
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.0;
+			};
+		};
+		B19AF7CE2DC4EC7400CC2A13 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		B1CC40322DC6305E00C0FA51 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
+		B6FB7EDFEA7E432783905426 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7A2853542D89761200638A02 /* SnapKit */ = {
+		B192E8EF2DC4EAED0030DE58 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7A2853532D89761200638A02 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = B192E8EE2DC4EAED0030DE58 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		B192E8F12DC4EAED0030DE58 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B192E8EE2DC4EAED0030DE58 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		B19AF7CF2DC4EC7400CC2A13 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B19AF7CE2DC4EC7400CC2A13 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		B1CC40332DC6305E00C0FA51 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B1CC40322DC6305E00C0FA51 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		B1CC40352DC6305E00C0FA51 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B1CC40322DC6305E00C0FA51 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		F6A8BB197559484396AE9478 /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6FB7EDFEA7E432783905426 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

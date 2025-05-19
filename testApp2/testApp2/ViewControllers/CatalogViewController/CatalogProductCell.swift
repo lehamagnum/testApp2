@@ -7,17 +7,18 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 protocol CatalogProductCellDelegate: AnyObject {
     
-    func didTapButton(productId: String)
+    func didTapButton(productId: Int)
 }
 
 class CatalogProductCell: UITableViewCell {
     //MARK: - Variables
     static let cellId = "TableViewCell"
     
-    private var productId: String?
+    private var productId: Int?
     
     weak var delegate: CatalogProductCellDelegate?
     
@@ -42,7 +43,7 @@ class CatalogProductCell: UITableViewCell {
         let lable = UILabel()
         lable.textColor = Resources.FigmaColors.blackLabelColor
         lable.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        lable.numberOfLines = 2
+        lable.numberOfLines = 0
         lable.setContentHuggingPriority(.defaultLow, for: .vertical)
         return lable
     }()
@@ -80,12 +81,16 @@ class CatalogProductCell: UITableViewCell {
     
     //MARK: - Methods
     
-    func configureCell(productId: String, image: UIImage?, title: String, description: String, price: String, btnTextColor: UIColor?, btnFont: UIFont) {
-        self.productId = productId
-        self.productImageView.image = image
+    func configureCell(id: Int, title: String, description: String, price: String, btnTextColor: UIColor?, btnFont: UIFont) {
+
+        self.productId = id
         self.titleLable.text = title
         self.descriptionLable.text = description
         self.priceButton.configureButton(title: price, textColor: btnTextColor, font: btnFont)
+    }
+    
+    func configureCellImages(url: URL?) {
+        self.productImageView.sd_setImage(with: url)
     }
 }
 
@@ -102,6 +107,7 @@ extension CatalogProductCell {
         containerView.addSubview(productImageView)
         productImageView.snp.makeConstraints { make in
             make.width.equalTo(UIScreen.main.bounds.width * 0.39)
+            make.height.equalTo(productImageView.snp.width).multipliedBy(3/2)
             make.leading.top.equalToSuperview()
             make.bottom.lessThanOrEqualToSuperview()
             
